@@ -1,3 +1,3 @@
 # StockChaser
-Toimiikohan tämä
+Let's get this started!
 
