@@ -64,6 +64,7 @@ public class FileReader {
     }
     
     public static boolean onkoEnsimmainenKirjainD(String s) {
+        //Jostain syystä tiedostojen alusta löytyy tuntematon merkki, vaikka kaiken datan pitäisi alkaa "Date"
         return s.charAt(0) == 'D';
     }
 
