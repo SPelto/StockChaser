@@ -5,12 +5,7 @@
  */
 package chaser.logiikka;
 
-import java.nio.file.Paths;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +24,7 @@ public class Parser {
         this.raakaData = raw;
         this.halututTrimmaamattomatRivit = new ArrayList<String>();
     }
+
     public Parser() {
         this.halututTrimmaamattomatRivit = new ArrayList<String>();
     }
@@ -39,9 +35,11 @@ public class Parser {
 
     public String makeString() {
         makeRivit();
-        
+
         String teksti = "";
-        Pattern p = Pattern.compile("(>)(.*?)(<)");
+        Pattern p = Pattern.compile("(>)"
+                + "(.*?)"
+                + "(<)");
         Matcher m;
         for (String rivi : this.halututTrimmaamattomatRivit) {
             m = p.matcher(rivi);
@@ -69,7 +67,9 @@ public class Parser {
 
     private void cutRawString() {
 
-        Pattern p = Pattern.compile("(<table class=\"gf-table historical_price\"><tr class=bb>)(.*?)(</table></div></form></div></div></div></div>)");
+        Pattern p = Pattern.compile("(<table class=\"gf-table historical_price\"><tr class=bb>)"
+                + "(.*?)"
+                + "(</table></div></form></div></div></div></div>)");
         Matcher m = p.matcher(this.raakaData);
 
         m.find();
@@ -93,7 +93,5 @@ public class Parser {
     public void setRaakaData(String raakaData) {
         this.raakaData = raakaData;
     }
-    
-    
 
 }
