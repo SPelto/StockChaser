@@ -1,5 +1,7 @@
 # StockChaser
-Ohjelma pystyy hakemaan dataa vain tietyltä sivulta "google finance historical data".
+## Ohjeet
+
+Ohjelma pystyy hakemaan dataa google finance sivustolta osiosta "historical prices".
 [Tässä esimerkki URL:stä joka annetaan ohjelmalle sen kysyessä](https://www.google.com/finance/historical?q=HEL%3AFORTUM&ei=KeXbWPD6OsPGsQHN3oiABg "Fortumin markkinadata")
 
 
