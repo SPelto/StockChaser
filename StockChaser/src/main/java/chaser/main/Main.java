@@ -5,8 +5,10 @@
  */
 package chaser.main;
 
+import chaser.logiikka.*;
+import chaser.ui.Ui;
 import java.util.Scanner;
-import chaser.logiikka.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -14,8 +16,10 @@ import chaser.logiikka.FileReader;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        Ui kayttis = new Ui(scanner);
+
     }
 
     public static void debug() {
@@ -29,6 +33,16 @@ public class Main {
         f.printData();
 
         System.out.println(f.getData().get(0)[5]);
+    }
+
+    public void testailua() {
+        String name = "Ramirent";
+        String url = "https://www.google.com/finance/historical?q=HEL%3ARMR1V&ei=-8rbWJGvNISHswHAlITwCg";
+
+        FileHandler handler = new FileHandler();
+
+//        handler.makeFileFromUrl(name, url);
+        handler.readF("ExampleData/Ramirent.csv");
     }
 
 }

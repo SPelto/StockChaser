@@ -26,6 +26,7 @@ public class FileReader {
 
     public void readFile(String filePath) {
         this.tiedosto = new File(filePath);
+        
     }
 
     public void workFile() {
