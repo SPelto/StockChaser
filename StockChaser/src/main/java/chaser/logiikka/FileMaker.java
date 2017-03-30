@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  *
- * @author samuli
+ * @author sPelto
  */
 public class FileMaker {
     private String path;

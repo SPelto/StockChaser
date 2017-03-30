@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author samuli
+ * @author sPelto
  */
 public class Ui {
 
@@ -41,10 +41,13 @@ public class Ui {
     private void valinta(String valinta) {
         if (valinta.equals("1")) {
             dataaNetista();
+            return;
         }
         if (valinta.equals("2")) {
             lueData();
+            return;
         }
+        System.out.println("\nValinta ei kelpaa (kirjoita toiminnon numero)");
     }
 
     private void dataaNetista() {

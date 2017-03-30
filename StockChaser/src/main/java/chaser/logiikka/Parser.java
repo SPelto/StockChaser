@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author samuli
+ * @author sPelto
  */
 public class Parser {
 

@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  *
- * @author samuli
+ * @author sPelto
  */
 public class FileHandler {
 

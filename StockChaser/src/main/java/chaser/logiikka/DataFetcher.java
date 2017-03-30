@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author samuli
+ * @author sPelto
  */
 public class DataFetcher {
 
