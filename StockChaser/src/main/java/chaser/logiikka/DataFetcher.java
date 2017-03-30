@@ -27,7 +27,7 @@ public class DataFetcher {
         return this.parser.makeMeaningfulString(sourceString);
     }
 
-    public static String getHtml(String url) throws MalformedURLException, IOException {
+    public String getHtml(String url) throws MalformedURLException, IOException {
         URL u = new URL(url);
         Scanner scanner = new Scanner(u.openStream());
         String sourceString = "";

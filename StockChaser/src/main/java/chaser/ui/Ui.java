@@ -15,11 +15,11 @@ import java.util.Scanner;
 public class Ui {
 
     private Scanner scanner;
-    private DataHandler fh;
+    private DataHandler dh;
 
     public Ui(Scanner scanner) {
         this.scanner = scanner;
-        this.fh = new DataHandler();
+        this.dh = new DataHandler();
 
         mainScreen();
     }
@@ -63,7 +63,7 @@ public class Ui {
             String url = scanner.nextLine();
 
             try {
-                fh.makeFileFromUrl(fileName, url);
+                dh.makeFileFromUrl(fileName, url);
                 break;
             } catch (Exception e) {
                 System.out.println("Antamassasi syötteessä oli vikaa, yritä uudelleen");
@@ -76,7 +76,7 @@ public class Ui {
         while (true) {
             System.out.println("\nAnna tiedoston nimi: ");
             try {
-                this.fh.readF("ExampleData/" + scanner.nextLine() + ".csv");
+                this.dh.readF("ExampleData/" + scanner.nextLine() + ".csv");
             } catch (Exception e) {
                 System.out.println("\nAntamasi tiedostonimi ei kelpaa. (Ei tarvitse kirjoittaa polkua eikä tiedostopäätettä. Vain nimi!)");
                 continue;
