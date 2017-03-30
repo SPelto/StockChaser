@@ -29,25 +29,33 @@ public class Ui {
         while (true) {
             System.out.println("\nValitse toiminto:\n"
                     + "1) Lataa dataa netistä\n"
-                    + "2) Lue tiedoston data");
+                    + "2) Lue tiedoston data\n"
+                    + "9) sammuta");
 
             System.out.print("Valitse: ");
-            valinta(scanner.nextLine());
-
+            boolean sammuta = valinta(scanner.nextLine());
+            if (sammuta) {
+                break;
+            }
         }
 
     }
 
-    private void valinta(String valinta) {
+    private boolean valinta(String valinta) {
         if (valinta.equals("1")) {
             dataaNetista();
-            return;
+            return false;
         }
         if (valinta.equals("2")) {
             lueData();
-            return;
+            return false;
+        }
+        if (valinta.equals("9")) {
+            return true;
         }
         System.out.println("\nValinta ei kelpaa (kirjoita toiminnon numero)");
+
+        return false;
     }
 
     private void dataaNetista() {
