@@ -5,7 +5,7 @@
  */
 package chaser.ui;
 
-import chaser.logiikka.FileHandler;
+import chaser.logiikka.DataHandler;
 import java.util.Scanner;
 
 /**
@@ -15,11 +15,11 @@ import java.util.Scanner;
 public class Ui {
 
     private Scanner scanner;
-    private FileHandler fh;
+    private DataHandler fh;
 
     public Ui(Scanner scanner) {
         this.scanner = scanner;
-        this.fh = new FileHandler();
+        this.fh = new DataHandler();
 
         mainScreen();
     }

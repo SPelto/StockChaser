@@ -13,13 +13,13 @@ import java.io.IOException;
  *
  * @author sPelto
  */
-public class FileHandler {
+public class DataHandler {
 
     private DataFetcher dFetch;
     private FileReader reader;
     private FileMaker writer;
 
-    public FileHandler() {
+    public DataHandler() {
         this.dFetch = new DataFetcher();
         this.reader = new FileReader();
         this.writer = new FileMaker();
