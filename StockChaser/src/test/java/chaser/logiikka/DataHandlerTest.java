@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author samuli
  */
-public class FileHandlerTest {
+public class DataHandlerTest {
     
-    public FileHandlerTest() {
+    public DataHandlerTest() {
     }
     
     @BeforeClass
