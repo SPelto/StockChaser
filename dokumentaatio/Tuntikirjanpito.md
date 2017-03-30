@@ -5,7 +5,7 @@ Päivä | Tunnit | Kuvaus
 22.3.2017 | 5h | Asioiden kertaamista, OhJa:n kurssimateriaali luettu läpi. Ohjelman rakenteen suunnittelua.
 23.3.2017 | 4h | Testidatan hankkimista ja koodauksen aloittaminen.
 29.3.2017 | 4h | Parserin ja FileFetcherin koodaamista.
-29.3.2017 | 1h | Parserin ja FileFetcherin kokoaminen toimivaksi kokonaisuudeki FileHandeler luokkaan.
+29.3.2017 | 1h | Parserin ja FileFetcherin kokoaminen toimivaksi kokonaisuudeki DataHandeler luokkaan.
 29.3.2017 | 1h | Yksinkertaisen tekstikäyttöliittymän luonti testailua varten
 30.3.2017 | 4h | Koodin jäsentelyä, siistimistä ja testien laatimista.
 ...|...|...|
