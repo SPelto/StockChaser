@@ -28,6 +28,7 @@ public class FileReader {
     }
 
     public void workFile() {
+        this.data.clear();
         Scanner tiedostoLukija = null;
         try {
             tiedostoLukija = new Scanner(this.tiedosto);

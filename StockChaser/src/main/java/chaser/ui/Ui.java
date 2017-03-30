@@ -28,7 +28,8 @@ public class Ui {
 
         while (true) {
             System.out.println("\nValitse toiminto:\n"
-                    + "1) Lataa dataa netistä");
+                    + "1) Lataa dataa netistä\n"
+                    + "2) Lue tiedoston data");
 
             System.out.print("Valitse: ");
             valinta(scanner.nextLine());
@@ -41,18 +42,21 @@ public class Ui {
         if (valinta.equals("1")) {
             dataaNetista();
         }
+        if (valinta.equals("2")) {
+            lueData();
+        }
     }
 
     private void dataaNetista() {
         while (true) {
             System.out.println("\nPoistu kirjoittamalla tiedoston nimeksi \"lopeta\"");
-            
+
             System.out.print("\nSyötä haluttu nimi luotavalle tiedostolle: ");
             String fileName = scanner.nextLine();
             if (fileName.equals("lopeta")) {
                 break;
             }
-            System.out.print("\nSyötä url mistä tieto ladataan: ");
+            System.out.print("\nSyötä url mistä data ladataan: ");
             String url = scanner.nextLine();
 
             try {
@@ -62,6 +66,19 @@ public class Ui {
                 System.out.println("Antamassasi syötteessä oli vikaa, yritä uudelleen");
                 System.out.println(e);
             }
+        }
+    }
+
+    public void lueData() {
+        while (true) {
+            System.out.println("\nAnna tiedoston nimi: ");
+            try {
+                this.fh.readF("ExampleData/" + scanner.nextLine() + ".csv");
+            } catch (Exception e) {
+                System.out.println("\nAntamasi tiedostonimi ei kelpaa. (Ei tarvitse kirjoittaa polkua eikä tiedostopäätettä. Vain nimi!)");
+                continue;
+            }
+            break;
         }
     }
 
