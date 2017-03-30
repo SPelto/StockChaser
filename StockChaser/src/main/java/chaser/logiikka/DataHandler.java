@@ -35,7 +35,7 @@ public class DataHandler {
         this.writer.makeFile(fileName, kirjoitettava);
     }
     
-    public void readF(String filePath) {
+    public void readFile(String filePath) {
         reader.readFile(filePath);
         reader.workFile();
         reader.printData();

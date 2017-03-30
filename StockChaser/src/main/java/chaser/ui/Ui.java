@@ -84,7 +84,7 @@ public class Ui {
         while (true) {
             System.out.println("\nAnna tiedoston nimi: ");
             try {
-                this.dh.readF("ExampleData/" + scanner.nextLine() + ".csv");
+                this.dh.readFile("ExampleData/" + scanner.nextLine() + ".csv");
             } catch (Exception e) {
                 System.out.println("\nAntamasi tiedostonimi ei kelpaa. (Ei tarvitse kirjoittaa polkua eikä tiedostopäätettä. Vain nimi!)");
                 continue;
