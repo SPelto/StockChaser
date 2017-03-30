@@ -5,6 +5,11 @@
  */
 package chaser.logiikka;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -36,10 +41,34 @@ public class FileMakerTest {
     @After
     public void tearDown() {
     }
+    
+    @After
+    public void poistaTestitiedostot() {
+        File kansio = new File("ExampleData/");
+        
+        File[] tiedostot = kansio.listFiles();
+        
+        for(File t : tiedostot) {
+            if (t.getName().equals("testi.csv")) {
+                t.delete();
+            }
+        }
+    }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void tiedostoLuodaan() throws IOException {
+        FileMaker fm = new FileMaker();
+        fm.makeFile("testi", "testi");
+        
+        
+        File kansio = new File("ExampleData/");
+        File[] tiedostot = kansio.listFiles();
+        
+        ArrayList<String> tiedostojenNimet = new ArrayList<>();
+        for(File t : tiedostot) {
+            tiedostojenNimet.add(t.getName());
+        }
+        assertTrue(tiedostojenNimet.contains("testi.csv"));
+        
+    }
 }

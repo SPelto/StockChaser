@@ -69,6 +69,7 @@ public class FileReader {
     }
 
     public void printData() {
+        System.out.println("");
         for (String[] s : this.data) {
             System.out.println(s[0] + ", " + s[1] + ", " + s[2] + ", " + s[3] + ", " + s[4] + ", " + s[5]);
         }

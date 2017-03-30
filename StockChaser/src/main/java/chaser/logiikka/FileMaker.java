@@ -6,6 +6,7 @@
 package chaser.logiikka;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -16,7 +17,7 @@ public class FileMaker {
     private String path;
     
     public FileMaker() {
-        
+        this.path = "ExampleData/";
     }
 
     public FileMaker(String path) {
@@ -24,22 +25,25 @@ public class FileMaker {
     }
     
     
-        public void makeFile(String fileName, String kirjoitettava) throws IOException {
+        public File makeFile(String fileName, String kirjoitettava) throws IOException {
         //Annetaan tiedostolle nimi ja tyyppi sekä sijainti
         fileName = fileName + ".csv";
-        File tiedosto = new File("ExampleData/" + fileName);
+        File tiedosto = new File(this.path + fileName);
 
-        //Luodaan tiedosto
+        // Luodaan tiedosto
         if (tiedosto.createNewFile()) {
             System.out.println("\nTiedosto luotu");
         } else {
             System.out.println("\nTiedosto on jo olemassa! Keskeytetään");
+            return null;
         }
 
         //Kirjoitetaan tiedostoon
-        java.io.FileWriter writer = new java.io.FileWriter(tiedosto);
+        FileWriter writer = new FileWriter(tiedosto);
         writer.write(kirjoitettava);
         writer.close();
+        
+        return tiedosto;
     }
     
 }

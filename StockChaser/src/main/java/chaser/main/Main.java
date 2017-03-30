@@ -5,9 +5,12 @@
  */
 package chaser.main;
 
+import chaser.logiikka.FileReader;
 import chaser.ui.Ui;
 import java.util.Scanner;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -16,8 +19,18 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         Ui kayttis = new Ui(scanner);
+    }
 
+    public static void debug() {
+        FileReader fr = new FileReader();
+        fr.readFile("ExampleData/Ramirent.csv");
+        fr.workFile();
+
+        Pattern p = Pattern.compile("\\d+\\.\\d+");
+        Matcher m = p.matcher("2.2");
+        System.out.println(m.find());
     }
 }

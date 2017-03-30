@@ -6,8 +6,11 @@
 package chaser.logiikka;
 
 import chaser.logiikka.FileReader;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,42 +43,35 @@ public class FileReaderTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
     @Test
     public void workFileLuoOikeanlaistaDataa() {
         FileReader f = new FileReader();
-        f.readFile("ExampleData/googl.csv");
-        f.workFile();
+        File kansio = new File("ExampleData/");
+        File[] tiedostot = kansio.listFiles();
+
         Random rand = new Random();
-        assertEquals(f.getData().get(rand.nextInt(f.getData().size())).getClass(), new String[6].getClass());
-        assertEquals(f.getData().get(1)[2], "855.35");
+
+        File testiTiedosto = tiedostot[2];
+
+        f.readFile("ExampleData/" + testiTiedosto.getName());
+        f.workFile();
+
         assertEquals(f.getData().get(0)[0], "Date");
-        
-    }
+        assertEquals(f.getData().get(0)[1], "Open");
+        assertEquals(f.getData().get(0)[2], "High");
+        assertEquals(f.getData().get(0)[3], "Low");
+        assertEquals(f.getData().get(0)[4], "Close");
+        assertEquals(f.getData().get(0)[5], "Volume");
 
-    @Test
-    public void tiedostonVaihtaminenOnnistuu() {
-        FileReader f = new FileReader();
-        f.readFile("ExampleData/googl.csv");
-        f.workFile();
-        ArrayList<String[]> data1 = f.getData();
-        
-        f.readFile("ExampleData/msft.csv");
-        f.workFile();
-        ArrayList<String[]> data2 = f.getData();
-        data1 = f.getData();
-        
-        
-        
-        Random rand = new Random();
-        int listanKoko = Math.min(data1.size(), data2.size());
-        int indeksi = rand.nextInt(listanKoko);
-        assertEquals(data1.get(indeksi)[5], data2.get(indeksi)[5]);
+        Pattern p = Pattern.compile("\\d+\\.\\d+");
+        Matcher m;
+        for (int i = 1; i < f.getData().size(); i++) {
+            for (int j = 1; j < 5; j++) {
+                m = p.matcher(f.getData().get(i)[1]);
+                assertTrue(m.find());
+            }
+        }
 
     }
-    
+
 }
