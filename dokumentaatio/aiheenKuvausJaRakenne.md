@@ -8,4 +8,4 @@
 - Vertailu
 - Omien omistuksien tallentaminen paikalliseen tiedostoon ja niiden päivittäminen
 
-![Luokkakaavio](/dokumentaatio/Luokkakaavio.png)
+![Luokkakaavio](/dokumentaatio/Luokkakaavio.png "Luokkakaavio")
