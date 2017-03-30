@@ -28,10 +28,6 @@ public class DataHandler {
     public void makeFileFromUrl(String fileName, String url) throws IOException {
         String kirjoitettava = this.dFetch.makeStringFromUrl(url);
                 
-        writeFile(fileName, kirjoitettava);
-    }
-    
-    public void writeFile(String fileName, String kirjoitettava) throws IOException {
         this.writer.makeFile(fileName, kirjoitettava);
     }
     
