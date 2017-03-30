@@ -18,22 +18,24 @@ public class DataFetcher {
 
     private String urlString;
     private String sourceString;
-    
+
+    public DataFetcher() {
+
+    }
+
     public DataFetcher(String url) {
         this.urlString = url;
     }
-    
-    public DataFetcher() {
-        
-    }
-    
-    public void htmlToString(String url) throws MalformedURLException, IOException{
+
+    public String htmlToString(String url) throws MalformedURLException, IOException {
         URL u = new URL(url);
         Scanner scanner = new Scanner(u.openStream());
-        
-        while(scanner.hasNextLine()) {
+
+        while (scanner.hasNextLine()) {
             this.sourceString = this.sourceString + scanner.nextLine();
         }
+
+        return this.sourceString;
     }
 
     public String getSourceString() {
@@ -43,6 +45,5 @@ public class DataFetcher {
     public String getUrlString() {
         return urlString;
     }
-   
 
 }

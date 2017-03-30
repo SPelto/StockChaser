@@ -33,9 +33,15 @@ public class Parser {
 
     }
 
-    public String makeString() {
+    public String makeMeaningfulString(String raakaData) {
+        this.raakaData = raakaData;
+        
+        // Luodaan html-koodista halutut osat riveiksi, niin että yhdellä rivillä on saman päivämäärän markkinadata
         makeRivit();
-
+        //
+        
+        
+        // Poistetaan luoduista riveistä "roska" pois ympäriltä ja tehdään niistä yksi merkkijono joka on helppo kirjoittaa tiedostolle.
         String teksti = "";
         Pattern p = Pattern.compile("(>)"
                 + "(.*?)"
@@ -53,7 +59,11 @@ public class Parser {
     }
 
     private void makeRivit() {
+        //Leikkaa html-koodista palan halutun datan ympäriltä. Helpottaa käsittelyä
         cutRawString();
+        //
+        
+        //Käsitellään irtileikattua osaa
         Pattern p = Pattern.compile(
                 "(td class=|th class=\"bb)"
                 + "(.*?)"
@@ -63,6 +73,7 @@ public class Parser {
         while (m.find()) {
             this.halututTrimmaamattomatRivit.add(m.group(2));
         }
+        //
     }
 
     private void cutRawString() {
