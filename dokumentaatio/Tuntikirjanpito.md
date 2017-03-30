@@ -7,4 +7,5 @@ Päivä | Tunnit | Kuvaus
 29.3.2017 | 4h | Parserin ja FileFetcherin koodaamista.
 29.3.2017 | 1h | Parserin ja FileFetcherin kokoaminen toimivaksi kokonaisuudeki FileHandeler luokkaan.
 29.3.2017 | 1h | Yksinkertaisen tekstikäyttöliittymän luonti testailua varten
+30.3.2017 | 4h | Koodin jäsentelyä, siistimistä ja testien laatimista.
 ...|...|...|
