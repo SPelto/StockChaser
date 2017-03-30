@@ -15,28 +15,28 @@
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.io.File;
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> java.util.ArrayList;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> java.util.Collection;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> java.util.Collections;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> java.util.Scanner;
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment"> * @author sPelto</em>
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../chaser/logiikka/FileReader.html">FileReader</a> {
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>      <strong class="jxr_keyword">private</strong> File tiedosto;
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>      <strong class="jxr_keyword">private</strong> ArrayList&lt;String[]&gt; data;
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>      <strong class="jxr_keyword">public</strong> <a href="../../chaser/logiikka/FileReader.html">FileReader</a>() {
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>          <strong class="jxr_keyword">this</strong>.data = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>      }
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> readFile(String filePath) {
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>          <strong class="jxr_keyword">this</strong>.tiedosto = <strong class="jxr_keyword">new</strong> File(filePath);
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>      }
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> workFile() {
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> java.util.Scanner;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment"> * @author sPelto</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../chaser/logiikka/FileReader.html">FileReader</a> {
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      <strong class="jxr_keyword">private</strong> File tiedosto;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <strong class="jxr_keyword">private</strong> ArrayList&lt;String[]&gt; data;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      <strong class="jxr_keyword">public</strong> <a href="../../chaser/logiikka/FileReader.html">FileReader</a>() {
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          <strong class="jxr_keyword">this</strong>.data = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>      }
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> readFile(String filePath) {
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          <strong class="jxr_keyword">this</strong>.tiedosto = <strong class="jxr_keyword">new</strong> File(filePath);
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>      }
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> workFile() {
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          <strong class="jxr_keyword">this</strong>.data.clear();
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>          Scanner tiedostoLukija = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>          <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>              tiedostoLukija = <strong class="jxr_keyword">new</strong> Scanner(<strong class="jxr_keyword">this</strong>.tiedosto);
@@ -72,16 +72,18 @@
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>      }
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>      
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> onkoEnsimmainenKirjainD(String s) {
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>          <strong class="jxr_keyword">return</strong> s.charAt(0) == 'D';
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>      }
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> printData() {
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>          <strong class="jxr_keyword">for</strong> (String[] s : <strong class="jxr_keyword">this</strong>.data) {
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>              System.out.println(s[0] + <span class="jxr_string">", "</span> + s[1] + <span class="jxr_string">", "</span> + s[2] + <span class="jxr_string">", "</span> + s[3] + <span class="jxr_string">", "</span> + s[4] + <span class="jxr_string">", "</span> + s[5]);
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>          }
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>      }
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>  
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>  }
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          <em class="jxr_comment">//Jostain syystä tiedostojen alusta löytyy tuntematon merkki, vaikka kaiken datan pitäisi alkaa "Date"</em>
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          <strong class="jxr_keyword">return</strong> s.charAt(0) == 'D';
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>      }
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> printData() {
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>          System.out.println(<span class="jxr_string">""</span>);
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          <strong class="jxr_keyword">for</strong> (String[] s : <strong class="jxr_keyword">this</strong>.data) {
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>              System.out.println(s[0] + <span class="jxr_string">", "</span> + s[1] + <span class="jxr_string">", "</span> + s[2] + <span class="jxr_string">", "</span> + s[3] + <span class="jxr_string">", "</span> + s[4] + <span class="jxr_string">", "</span> + s[5]);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          }
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      }
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>  
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

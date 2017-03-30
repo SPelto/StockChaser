@@ -10,3 +10,7 @@ Toistaiseksi kaikki data tallennetaan "ExampleData" kansioon.
 # Dokumentaatio
 - [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 - [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)
+
+# Raportit
+[checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/dokumentaatio/checkstyle/checkstyle.html)\
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/dokumentaatio/pit/index.html)

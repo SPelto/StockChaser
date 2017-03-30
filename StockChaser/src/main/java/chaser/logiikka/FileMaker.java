@@ -14,8 +14,9 @@ import java.io.IOException;
  * @author sPelto
  */
 public class FileMaker {
+
     private String path;
-    
+
     public FileMaker() {
         this.path = "ExampleData/";
     }
@@ -23,9 +24,8 @@ public class FileMaker {
     public FileMaker(String path) {
         this.path = path;
     }
-    
-    
-        public File makeFile(String fileName, String kirjoitettava) throws IOException {
+
+    public File makeFile(String fileName, String kirjoitettava) throws IOException {
         //Annetaan tiedostolle nimi ja tyyppi sekä sijainti
         fileName = fileName + ".csv";
         File tiedosto = new File(this.path + fileName);
@@ -42,8 +42,8 @@ public class FileMaker {
         FileWriter writer = new FileWriter(tiedosto);
         writer.write(kirjoitettava);
         writer.close();
-        
+
         return tiedosto;
     }
-    
+
 }
