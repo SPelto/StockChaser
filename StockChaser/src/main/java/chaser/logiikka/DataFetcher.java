@@ -16,34 +16,25 @@ import java.util.Scanner;
  */
 public class DataFetcher {
 
-    private String urlString;
-    private String sourceString;
+    private Parser parser;
 
     public DataFetcher() {
-
+        this.parser = new Parser();
     }
 
-    public DataFetcher(String url) {
-        this.urlString = url;
+    public String makeStringFromUrl(String url) throws IOException {
+        String sourceString = getHtml(url);
+        return this.parser.makeMeaningfulString(sourceString);
     }
 
-    public String htmlToString(String url) throws MalformedURLException, IOException {
+    public static String getHtml(String url) throws MalformedURLException, IOException {
         URL u = new URL(url);
         Scanner scanner = new Scanner(u.openStream());
-
+        String sourceString = "";
         while (scanner.hasNextLine()) {
-            this.sourceString = this.sourceString + scanner.nextLine();
+            sourceString = sourceString + scanner.nextLine();
         }
 
-        return this.sourceString;
-    }
-
-    public String getSourceString() {
         return sourceString;
     }
-
-    public String getUrlString() {
-        return urlString;
-    }
-
 }

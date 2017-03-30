@@ -16,42 +16,23 @@ import java.io.IOException;
 public class FileHandler {
 
     private DataFetcher dFetch;
-    private Parser parser;
     private FileReader reader;
+    private FileMaker writer;
 
     public FileHandler() {
         this.dFetch = new DataFetcher();
-        this.parser = new Parser();
         this.reader = new FileReader();
+        this.writer = new FileMaker();
     }
 
     public void makeFileFromUrl(String fileName, String url) throws IOException {
-        // Ladataan sivuston html koodi ja tehdään siitä merkkijono
-        String htmlString = this.dFetch.htmlToString(url);
-        
-        // Haetaan parser luokassa olevan regexin avulla html-koodista haluttu osa
-        String kirjoitettava = this.parser.makeMeaningfulString(htmlString);
-        
-        
-        fileWriter(fileName, kirjoitettava);
+        String kirjoitettava = this.dFetch.makeStringFromUrl(url);
+                
+        writeFile(fileName, kirjoitettava);
     }
     
-    public void fileWriter(String fileName, String kirjoitettava) throws IOException {
-        //Annetaan tiedostolle nimi ja tyyppi sekä sijainti
-        fileName = fileName + ".csv";
-        File tiedosto = new File("ExampleData/" + fileName);
-
-        //Luodaan tiedosto
-        if (tiedosto.createNewFile()) {
-            System.out.println("\nTiedosto luotu");
-        } else {
-            System.out.println("\nTiedosto on jo olemassa! Keskeytetään");
-        }
-
-        //Kirjoitetaan tiedostoon
-        FileWriter writer = new FileWriter(tiedosto);
-        writer.write(kirjoitettava);
-        writer.close();
+    public void writeFile(String fileName, String kirjoitettava) throws IOException {
+        this.writer.makeFile(fileName, kirjoitettava);
     }
     
     public void readF(String filePath) {
