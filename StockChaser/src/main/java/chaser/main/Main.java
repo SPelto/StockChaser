@@ -24,13 +24,4 @@ public class Main {
         Ui kayttis = new Ui(scanner);
     }
 
-    public static void debug() {
-        FileReader fr = new FileReader();
-        fr.readFile("ExampleData/Ramirent.csv");
-        fr.workFile();
-
-        Pattern p = Pattern.compile("\\d+\\.\\d+");
-        Matcher m = p.matcher("2.2");
-        System.out.println(m.find());
-    }
 }
