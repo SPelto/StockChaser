@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 /**
  *
  * @author sPelto
+ * 
+ * Luokka lukee raakaa html-koodia ja etsii sieltä oleellisen markkinadatan.
  */
 public class Parser {
 
@@ -28,7 +30,10 @@ public class Parser {
         this.raakaData = raw;
         this.halututTrimmaamattomatRivit = new ArrayList<String>();
     }
-
+/**
+ * Metodi luo html-koodista siistin merkkijonon joka on valmiissa muodossa tiedostolle kirjoittamista varten.
+ * @return Metodi palauttaa siistin merkkijonon jossa on tarpeellinen data siististi aseteltuna.
+ */
     public String makeMeaningfulString() {
         // Luodaan html-koodista halutut osat riveiksi, niin että yhdellä rivillä on saman päivämäärän markkinadata
         makeRivit();
@@ -50,7 +55,9 @@ public class Parser {
         }
         return teksti;
     }
-
+/**
+ * Metodi luo apulistan jossa on paloja html-koodia haluttujen datakappaleiden ympäriltä.
+ */
     public void makeRivit() {
         //Leikkaa html-koodista palan halutun datan ympäriltä. Helpottaa käsittelyä
         cutRaakaData();
@@ -68,7 +75,9 @@ public class Parser {
         }
         //
     }
-
+/**
+ * Metodi leikkaa html-koodista palasen halutun osan ympäriltä.
+ */
     public void cutRaakaData() {
 
         Pattern p = Pattern.compile("(<table class=\"gf-table historical_price\"><tr class=bb>)"

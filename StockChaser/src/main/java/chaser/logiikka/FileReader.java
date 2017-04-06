@@ -26,7 +26,9 @@ public class FileReader {
         this.tiedosto = new File(filePath);
         
     }
-
+/**
+ * Luo sisäisen muuttujan ArrayList<String[]> this.data jossa on hyvin jäsenneltynä .csv tiedostolta luettu data. 
+ */
     public void workFile() {
         this.data.clear();
         Scanner tiedostoLukija = null;
@@ -43,6 +45,7 @@ public class FileReader {
         }
         siistiListanTaulut(this.data);
     }
+    
     public static void siistiListanTaulut(ArrayList<String[]> lista) {
         ArrayList<String[]> apuLista = new ArrayList<>();
         if (!onkoEnsimmainenKirjainD(lista.get(0)[0])) {
@@ -67,7 +70,9 @@ public class FileReader {
         //Jostain syystä tiedostojen alusta löytyy tuntematon merkki, vaikka kaiken datan pitäisi alkaa "Date"
         return s.charAt(0) == 'D';
     }
-
+/**
+ * Printtaa sisäisen muuttuja "this.data" sisällön.
+ */
     public void printData() {
         System.out.println("");
         for (String[] s : this.data) {

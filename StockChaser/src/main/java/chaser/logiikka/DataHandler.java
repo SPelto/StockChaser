@@ -25,12 +25,22 @@ public class DataHandler {
         this.writer = new FileMaker();
     }
 
+    /**
+     * Luo .csv tiedoston.
+     * @param fileName Käyttäjän antama nimi luotavalle tiedostolle.
+     * @param url Url josta data haetaan.
+     * @throws IOException 
+     */
     public void makeFileFromUrl(String fileName, String url) throws IOException {
         String kirjoitettava = this.dFetch.makeStringFromUrl(url);
                 
         this.writer.makeFile(fileName, kirjoitettava);
     }
     
+    /**
+     * Lukee dataa tiedostolta ja printtaa sen näytölle.
+     * @param filePath Luettava tiedosto.
+     */
     public void readFile(String filePath) {
         reader.readFile(filePath);
         reader.workFile();
