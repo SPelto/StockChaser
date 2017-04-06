@@ -12,11 +12,11 @@ import java.awt.event.ActionListener;
  *
  * @author samuli
  */
-public class LueDataKuuntelija implements ActionListener{
+public class LueDataKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         // Tässäkin pitäisi avata uusi ikkuna
     }
-    
+
 }
