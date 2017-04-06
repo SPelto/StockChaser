@@ -24,7 +24,8 @@ public class DataFetcher {
 
     public String makeStringFromUrl(String url) throws IOException {
         String sourceString = getHtml(url);
-        return this.parser.makeMeaningfulString(sourceString);
+        this.parser.setRaakaData(sourceString);
+        return this.parser.makeMeaningfulString();
     }
 
     public String getHtml(String url) throws MalformedURLException, IOException {

@@ -74,4 +74,24 @@ public class FileReaderTest {
 
     }
 
+    @Test
+    public void workFilePuhdistaaMuuttujan() {
+        FileReader f = new FileReader();
+
+        f.readFile("src/test/aputiedostot/testi.csv");
+
+        f.workFile();
+        ArrayList<String[]> alkuTyhja = f.getData();
+
+        f.workFile();
+        ArrayList<String[]> alkuEiValttamattaTyhja = f.getData();
+
+        int iteraatio = 0;
+        for (String[] lista : alkuEiValttamattaTyhja) {
+            assertTrue(lista[0].equals(alkuTyhja.get(iteraatio)[0]));
+            iteraatio++;
+        }
+        assertTrue(alkuEiValttamattaTyhja.size() == alkuTyhja.size());
+    }
+
 }

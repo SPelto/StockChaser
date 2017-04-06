@@ -46,4 +46,9 @@ public class FileMaker {
         return tiedosto;
     }
 
+    public String getPath() {
+        return path;
+    }
+    
+
 }

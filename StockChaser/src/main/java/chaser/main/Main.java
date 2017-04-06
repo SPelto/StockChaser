@@ -6,11 +6,14 @@
 package chaser.main;
 
 import chaser.logiikka.FileReader;
+import chaser.ui.Alkuvalikko;
+import chaser.ui.GUI;
 import chaser.ui.Ui;
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -21,7 +24,10 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Ui kayttis = new Ui(scanner);
+//        Ui kayttis = new Ui(scanner);
+        Alkuvalikko gui = new Alkuvalikko();
+        SwingUtilities.invokeLater(gui);
+        
     }
 
 }

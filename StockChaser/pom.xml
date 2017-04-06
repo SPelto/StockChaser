@@ -36,11 +36,9 @@
     <configuration>
         <targetClasses>
             <param>chaser.logiikka.*</param>
-            <param>chaser.ui*</param>
         </targetClasses>
         <targetTests>
             <param>chaser.logiikka.*</param>
-            <param>chaser.ui.*</param>
         </targetTests>
     </configuration>
         </plugin>
