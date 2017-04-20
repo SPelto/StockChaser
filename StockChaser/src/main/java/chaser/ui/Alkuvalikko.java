@@ -6,15 +6,19 @@
 package chaser.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 /**
@@ -24,11 +28,11 @@ import javax.swing.WindowConstants;
 public class Alkuvalikko implements Runnable {
 
     private JFrame frame;
-    
+
     @Override
     public void run() {
         frame = new JFrame("StockChaser");
-        frame.setPreferredSize(new Dimension(400, 150));
+        frame.setPreferredSize(new Dimension(400, 200));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         luoKomponentit(frame.getContentPane());
@@ -42,14 +46,13 @@ public class Alkuvalikko implements Runnable {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
 
-        container.add(alkuValikkoNapit());
         container.add(alkuValikkoTekstit());
+        container.add(alkuValikkoNapit());
     }
 
     private JPanel alkuValikkoNapit() {
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(400, 100));
-        panel.setLayout(new GridLayout());
+        panel.setLayout(new GridLayout(3, 1));
 
         JButton haeData = new JButton("Hae dataa netistä");
         haeData.addActionListener(new KysyUrlKuuntelija());
@@ -59,17 +62,20 @@ public class Alkuvalikko implements Runnable {
         lueData.addActionListener(new LueDataKuuntelija());
         panel.add(lueData);
 
+        JButton piirraGraafi = new JButton("Piirrä graafi");
+        panel.add(piirraGraafi);
+
         return panel;
     }
 
     private JPanel alkuValikkoTekstit() {
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(400, 50));
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new GridLayout());
 
-        JTextArea tekstikentta = new JTextArea("Kirjoita url josta data haetaan");
-        panel.add(tekstikentta);
-
+        JLabel label = new JLabel("StockChaser");
+        label.setFont(new Font("Mitä merkitystä tällä on?", Font.BOLD, 28));
+        label.setHorizontalAlignment(label.CENTER);
+        panel.add(label);
         return panel;
     }
 
