@@ -6,7 +6,6 @@
 package chaser.main;
 
 import chaser.logiikka.FileReader;
-import chaser.ui.Alkuvalikko;
 import chaser.ui.GUI;
 import chaser.ui.Ui;
 import java.util.Scanner;
@@ -22,12 +21,10 @@ import javax.swing.SwingUtilities;
 public class Main {
 
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-//        Ui kayttis = new Ui(scanner);
-        Alkuvalikko gui = new Alkuvalikko();
-        SwingUtilities.invokeLater(gui);
-        
+//        Scanner scanner = new Scanner(System.in);
+//        Ui k = new Ui(scanner);
+        GUI g = new GUI();
+        g.setVisible(true);
     }
 
 }
