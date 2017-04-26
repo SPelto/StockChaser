@@ -8,6 +8,7 @@ package chaser.logiikka;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,24 +28,25 @@ public class DataHandler {
 
     /**
      * Luo .csv tiedoston.
+     *
      * @param fileName Käyttäjän antama nimi luotavalle tiedostolle.
      * @param url Url josta data haetaan.
-     * @throws IOException 
+     * @throws IOException
      */
     public void makeFileFromUrl(String fileName, String url) throws IOException {
         String kirjoitettava = this.dFetch.makeStringFromUrl(url);
-                
+
         this.writer.makeFile(fileName, kirjoitettava);
     }
-    
+
     /**
-     * Lukee dataa tiedostolta ja printtaa sen näytölle.
      * @param filePath Luettava tiedosto.
+     * @return palauttaa tiedostosta haetun datan.
      */
-    public void readFile(String filePath) {
+    public ArrayList<String[]> readFile(String filePath) {
         reader.readFile(filePath);
         reader.workFile();
-        reader.printData();
+        return reader.getData();
     }
 
 }

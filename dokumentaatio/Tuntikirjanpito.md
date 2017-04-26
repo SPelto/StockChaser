@@ -10,4 +10,7 @@ Päivä | Tunnit | Kuvaus
 30.3.2017 | 4h | Koodin jäsentelyä, siistimistä ja testien laatimista.
 05.4.2017 | 3h | Java.Swing opettelua ja graafisen käyttöliittymän aloittaminen
 06.4.2017 | 5h | Graafisen käyttöliittymän tekemistä, ongelmaan törmääminen. Testien päivittämistä.
+19.4.2017 | 3h | Käyttöliittymän ulkoasun suunnitelua ja koodaamista.
+24.4.2017 | 4h | Tiedoston hakeminen graafisen käyttöliittymän kautta
+26.4.2017 | 5h | Piirtäjän koodamista
 ...|...|...|
