@@ -5,7 +5,6 @@
 **Käyttäjien toiminnot**
 - Datan lataaminen netistä
 - Datan visualisointi
-- Vertailu
 - Omien omistuksien tallentaminen paikalliseen tiedostoon ja niiden päivittäminen
 
 ### Luokkakaavio
