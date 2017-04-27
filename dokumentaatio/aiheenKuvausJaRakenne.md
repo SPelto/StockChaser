@@ -12,4 +12,4 @@
 ![Luokkakaavio](/dokumentaatio/Luokkakaavio.png)
 
 ### Sekvenssikaavio
-![Sekvenssikaavio hae toiminnosta](dokumentaatio/HaeToiminnonSekvenssikaavio.png)
+![Sekvenssikaavio hae toiminnosta](/dokumentaatio/HaeToiminnonSekvenssikaavio.png)
