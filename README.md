@@ -13,4 +13,5 @@ Toistaiseksi kaikki data tallennetaan "ExampleData" kansioon.
 
 # Raportit
 [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/dokumentaatio/checkstyle/checkstyle.html)\
-[pit-raportti](https://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/dokumentaatio/pit/201704062208/index.html)
+[pit-raportti](http://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/dokumentaatio/pit/201704272329/index.html)
+
