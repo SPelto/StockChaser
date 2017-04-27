@@ -11,5 +11,8 @@
 ### Luokkakaavio
 ![Luokkakaavio](/dokumentaatio/Luokkakaavio.png)
 
-### Sekvenssikaavio
+### Sekvenssikaavio hae-toiminnosta
 ![Sekvenssikaavio hae toiminnosta](/dokumentaatio/HaeToiminnonSekvenssikaavio.png)
+
+### Sekvenssikaavio piirrä-toiminnosta
+![Sekvenssikaavio hae toiminnosta](/dokumentaatio/PiirräToiminnonSekvenssikaavio.png)
