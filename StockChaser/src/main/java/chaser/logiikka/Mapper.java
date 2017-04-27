@@ -14,7 +14,6 @@ import java.util.Collections;
  */
 public class Mapper {
 
-    private boolean debug;
     private ArrayList<String[]> raakaData;
     private ArrayList<String> valittuData;
     private int[] mapattuDataY;
@@ -27,15 +26,8 @@ public class Mapper {
         this.valittuData = new ArrayList<>();
         this.dimensio = dimensio;
         this.reunat = reunat;
-        this.debug = false;
     }
 
-//    0 - date
-//    1 - open
-//    2 - High
-//    3 - Low
-//    4 - Close
-//    5 - Volume
     public void prosessoiXjaY(String dataValinta) {
         int sarakeValinta = valinta(dataValinta);
         this.valittuData.clear();
@@ -76,11 +68,6 @@ public class Mapper {
             valmisX = (piirrettavaAlue / this.raakaData.size()) * iteraatio;
             valmisY = (d / max) * (this.dimensio[1] - this.reunat[1]);
 
-            if (this.debug) {
-                System.out.println("Alue: " + piirrettavaAlue);
-                System.out.println("RaakaData.size: " + this.raakaData.size());
-                System.out.println("valmisY: " + valmisY);
-            }
             this.mapattuDataX[iteraatio] = (int) Math.round(valmisX);
             this.mapattuDataY[iteraatio] = (int) Math.round(valmisY);
             iteraatio++;
@@ -93,9 +80,9 @@ public class Mapper {
         String pilkuton = alku + loppu;
         return Double.parseDouble(pilkuton);
     }
-    
+
     private double peilaaMediaaninSuhteen() {
-       return -1;
+        return -1;
     }
 
     private int valinta(String dataValinta) {
@@ -113,14 +100,14 @@ public class Mapper {
         if (dataValinta.equals("Close")) {
             sarakeValinta = 4;
         }
-        if (dataValinta.equals("Volume")) {
-            sarakeValinta = 5;
-        }
+//        if (dataValinta.equals("Volume")) {
+//            sarakeValinta = 5;
+//        }
         return sarakeValinta;
     }
 
     public int[] getMapattuDataX() {
-        return this.mapattuDataX;
+        return mapattuDataX;
     }
 
     public int[] getMapattuDataY() {

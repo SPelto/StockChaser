@@ -60,7 +60,7 @@ public class DataHandlerTest {
 
     @Test
     public void DataHandlerLuoTiedoston() throws IOException {
-        String url = "file:///home/samuli/StockChaser/StockChaser/src/test/aputiedostot/testiHtml.txt";
+        String url = "https://www.google.com/finance/historical?q=NASDAQ%3AAAPL&ei=YkkCWdn9EsHDswGB3K_ICg";
         this.dh.makeFileFromUrl("testi", url);
 
         File kansio = new File("ExampleData/");
@@ -93,6 +93,6 @@ public class DataHandlerTest {
 
     @Test
     public void DataHandlerLukeeTiedoston() {
-        this.dh.readFile("ExampleData/Tesla.csv");
+        this.dh.readFile("src/test/aputiedostot/testi.csv");
     }
 }

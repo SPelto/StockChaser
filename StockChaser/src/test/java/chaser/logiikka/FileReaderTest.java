@@ -46,14 +46,8 @@ public class FileReaderTest {
     @Test
     public void workFileLuoOikeanlaistaDataa() {
         FileReader f = new FileReader();
-        File kansio = new File("ExampleData/");
-        File[] tiedostot = kansio.listFiles();
-
-        Random rand = new Random();
-
-        File testiTiedosto = tiedostot[2];
-
-        f.readFile("ExampleData/" + testiTiedosto.getName());
+        
+        f.readFile("src/test/aputiedostot/testi.csv");
         f.workFile();
 
         assertEquals(f.getData().get(0)[0], "Date");

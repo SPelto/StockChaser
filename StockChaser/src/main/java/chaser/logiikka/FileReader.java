@@ -70,14 +70,4 @@ public class FileReader {
         //Jostain syystä tiedostojen alusta löytyy tuntematon merkki, vaikka kaiken datan pitäisi alkaa "Date"
         return s.charAt(0) == 'D';
     }
-/**
- * Printtaa sisäisen muuttuja "this.data" sisällön.
- */
-    public void printData() {
-        System.out.println("");
-        for (String[] s : this.data) {
-            System.out.println(s[0] + ", " + s[1] + ", " + s[2] + ", " + s[3] + ", " + s[4] + ", " + s[5]);
-        }
-    }
-
 }

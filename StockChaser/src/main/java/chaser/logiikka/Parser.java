@@ -101,7 +101,6 @@ public class Parser {
 //        m.find();
 //        this.muokattuData = m.group(2);
 //    }
-
     public String getRaakaData() {
         return raakaData;
     }

@@ -24,13 +24,17 @@ public class FileMaker {
     public FileMaker(String path) {
         this.path = path;
     }
-/**
- * Luo tiedoston jos kansiossa ei viellä ole sen nimistä tiedostoa.
- * @param fileName Tiedostolle annettava nimi (saa automaattisesti .csv päätteen)
- * @param teksti Merkkijono joka tiedostolle kirjoitetaan.
- * @return palauttaa joko null jos tiedosto on jo olemassa, tai luodun tiedoston.
- * @throws IOException 
- */
+
+    /**
+     * Luo tiedoston jos kansiossa ei viellä ole sen nimistä tiedostoa.
+     *
+     * @param fileName Tiedostolle annettava nimi (saa automaattisesti .csv
+     * päätteen)
+     * @param teksti Merkkijono joka tiedostolle kirjoitetaan.
+     * @return palauttaa joko null jos tiedosto on jo olemassa, tai luodun
+     * tiedoston.
+     * @throws IOException
+     */
     public File makeFile(String fileName, String teksti) throws IOException {
         //Annetaan tiedostolle nimi ja tyyppi sekä sijainti
         fileName = fileName + ".csv";
@@ -55,6 +59,5 @@ public class FileMaker {
     public String getPath() {
         return path;
     }
-    
 
 }
