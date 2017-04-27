@@ -87,7 +87,7 @@ public class ParserTest {
     @Test
     public void makeMeaningfullStringToimii() {
         Parser p = new Parser(this.html);
-        p.setRaakaData(html);
+        p.setRawData(html);
         
         String teksti = p.makeMeaningfulString();
         assertTrue(teksti.substring(0, 31).equals("Date,Open,High,Low,Close,Volume"));

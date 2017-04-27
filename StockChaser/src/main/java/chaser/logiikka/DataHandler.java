@@ -34,9 +34,9 @@ public class DataHandler {
      * @throws IOException
      */
     public void makeFileFromUrl(String fileName, String url) throws IOException {
-        String kirjoitettava = this.dFetch.makeStringFromUrl(url);
+        String teksti = this.dFetch.makeStringFromUrl(url);
 
-        this.writer.makeFile(fileName, kirjoitettava);
+        this.writer.makeFile(fileName, teksti);
     }
 
     /**

@@ -27,11 +27,11 @@ public class FileMaker {
 /**
  * Luo tiedoston jos kansiossa ei viellä ole sen nimistä tiedostoa.
  * @param fileName Tiedostolle annettava nimi (saa automaattisesti .csv päätteen)
- * @param kirjoitettava Merkkijono joka tiedostolle kirjoitetaan.
+ * @param teksti Merkkijono joka tiedostolle kirjoitetaan.
  * @return palauttaa joko null jos tiedosto on jo olemassa, tai luodun tiedoston.
  * @throws IOException 
  */
-    public File makeFile(String fileName, String kirjoitettava) throws IOException {
+    public File makeFile(String fileName, String teksti) throws IOException {
         //Annetaan tiedostolle nimi ja tyyppi sekä sijainti
         fileName = fileName + ".csv";
         File tiedosto = new File(this.path + fileName);
@@ -46,7 +46,7 @@ public class FileMaker {
 
         //Kirjoitetaan tiedostoon
         FileWriter writer = new FileWriter(tiedosto);
-        writer.write(kirjoitettava);
+        writer.write(teksti);
         writer.close();
 
         return tiedosto;

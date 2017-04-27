@@ -31,7 +31,7 @@ public class DataFetcher {
  */
     public String makeStringFromUrl(String url) throws IOException {
         String sourceString = getHtml(url);
-        this.parser.setRaakaData(sourceString);
+        this.parser.setRawData(sourceString);
         return this.parser.makeMeaningfulString();
     }
 /**

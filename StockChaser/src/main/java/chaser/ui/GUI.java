@@ -208,7 +208,6 @@ public class GUI extends javax.swing.JFrame {
 
     private void HaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HaeActionPerformed
         String url = Url.getText();
-        this.dh = new DataHandler();
         String tiedostonNimi = luotavanTiedostonNimi.getText();
 
         boolean onnistui = true;
@@ -221,7 +220,7 @@ public class GUI extends javax.swing.JFrame {
         if (onnistui) {
             jTextArea1.setText("Tiedosto luotiin!");
         }
-        
+
         etsiTiedostot();
     }//GEN-LAST:event_HaeActionPerformed
 
@@ -235,7 +234,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void ListaaTiedostotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaaTiedostotActionPerformed
         String listaString = "";;
-        for(String s : this.tiedostot) {
+        for (String s : this.tiedostot) {
             listaString = listaString + s + "\n";
         }
         ListatutTiedostot.setText(listaString);
@@ -244,16 +243,17 @@ public class GUI extends javax.swing.JFrame {
     private void PiirtajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PiirtajaActionPerformed
         JFrame f = new JFrame("Grapher");
         f.setVisible(true);
-        f.setSize(1000,700);
-        Grapher graph = new Grapher(new int[]{1000,700}, "Tesla", this.dh);
+        f.setSize(1000, 700);
+        int[] dimensio = new int[]{1000, 700};
+        int[] reunat = new int[]{50, 50};
+
+        Grapher graph = new Grapher(dimensio, reunat, "Tesla", "Close", this.dh);
         f.add(graph);
     }//GEN-LAST:event_PiirtajaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-    
     //Tartteekohan tätä mihinkään?
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
