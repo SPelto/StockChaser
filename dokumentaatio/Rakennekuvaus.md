@@ -12,14 +12,14 @@ StockChaser on ohjelma joka sallii markkinadatan lataamisen netistä, sen sailö
 
 
 **Luokkien toiminta**
-DataHandler on vastuussa datan hakemisesta, muovaamisesta ja tallentamisesta. Se käyttää apunaan luokkia: "DataFetcher", "FileMaker" ja "FileReader"
+- DataHandler on vastuussa datan hakemisesta, muovaamisesta ja tallentamisesta. Se käyttää apunaan luokkia: "DataFetcher", "FileMaker" ja "FileReader"
 
-DataFetcher hakee netistä dataa ja Parser-luokan avulal muovaa siitä luettavaa.
+- DataFetcher hakee netistä dataa ja Parser-luokan avulal muovaa siitä luettavaa.
 
-FileMaker on yksinkertainen luokka tiedostojen kirjoittamiseen.
+- FileMaker on yksinkertainen luokka tiedostojen kirjoittamiseen.
 
-FileReader lukee .csv tiedostolta dataa ja esittää sen halutulla tavalla.
+- FileReader lukee .csv tiedostolta dataa ja esittää sen halutulla tavalla.
 
-Mapper sovittaa sille annetut datapisteet määritetyn kokeisen alueen graafin pisteiksi.
+- Mapper sovittaa sille annetut datapisteet määritetyn kokeisen alueen graafin pisteiksi.
 
 
