@@ -74,15 +74,15 @@ public class ParserTest {
         }
     }
 
-    @Test
-    public void cutRawStringLeikkaaHtmlKoodiaOikeastaKohtaa() throws FileNotFoundException {
-        Parser p = new Parser(this.html);
-        p.cutRaakaData();
-
-        assertTrue(p.getMuokattuData().substring(0, 10).equals("<th class="));
-        assertTrue(p.getMuokattuData().substring(p.getMuokattuData().length() - 10, p.getMuokattuData().length()).equals(">1,495,714"));
-
-    }
+//    @Test
+//    public void cutRawStringLeikkaaHtmlKoodiaOikeastaKohtaa() throws FileNotFoundException {
+//        Parser p = new Parser(this.html);
+//        p.cutRaakaData();
+//
+//        assertTrue(p.getMuokattuData().substring(0, 10).equals("<th class="));
+//        assertTrue(p.getMuokattuData().substring(p.getMuokattuData().length() - 10, p.getMuokattuData().length()).equals(">1,495,714"));
+//
+//    }
 
     @Test
     public void makeMeaningfullStringToimii() {

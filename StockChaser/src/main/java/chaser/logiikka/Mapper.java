@@ -44,10 +44,10 @@ public class Mapper {
             this.valittuData.add(s[sarakeValinta]);
         }
         this.valittuData.remove(0);
-        mapFunction();
+        mapData();
     }
 
-    private void mapFunction() {
+    private void mapData() {
         this.mapattuDataY = new int[this.valittuData.size()];
         this.mapattuDataX = new int[this.valittuData.size()];
         ArrayList<Double> apuLista = new ArrayList<>();
