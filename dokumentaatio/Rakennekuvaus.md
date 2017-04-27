@@ -3,7 +3,6 @@ StockChaser on ohjelma joka sallii markkinadatan lataamisen netistä, sen sailö
 
 
 **Luokat**
-Sovelluslogiikan luokkia ohjelmasta löytyy
 -DataHandler
 -DataFetcher
 -FileMaker
