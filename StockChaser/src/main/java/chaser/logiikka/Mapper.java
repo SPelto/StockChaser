@@ -31,16 +31,6 @@ public class Mapper {
         this.reunat = reunat;
     }
 
-//    public void prosessoiXjaY(String dataValinta) {
-//        int sarakeValinta = valinta(dataValinta);
-//        this.valittuData.clear();
-//
-//        for (String[] s : this.raakaData) {
-//            this.valittuData.add(s[sarakeValinta]);
-//        }
-//        this.valittuData.remove(0);
-//        mapData();
-//    }
 
     public void mapData(String dataValinta) {
         int sarakeValinta = valinta(dataValinta);
