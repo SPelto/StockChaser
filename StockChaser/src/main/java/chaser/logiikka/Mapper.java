@@ -6,7 +6,10 @@
 package chaser.logiikka;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 /**
  *
@@ -28,7 +31,18 @@ public class Mapper {
         this.reunat = reunat;
     }
 
-    public void prosessoiXjaY(String dataValinta) {
+//    public void prosessoiXjaY(String dataValinta) {
+//        int sarakeValinta = valinta(dataValinta);
+//        this.valittuData.clear();
+//
+//        for (String[] s : this.raakaData) {
+//            this.valittuData.add(s[sarakeValinta]);
+//        }
+//        this.valittuData.remove(0);
+//        mapData();
+//    }
+
+    public void mapData(String dataValinta) {
         int sarakeValinta = valinta(dataValinta);
         this.valittuData.clear();
 
@@ -36,10 +50,7 @@ public class Mapper {
             this.valittuData.add(s[sarakeValinta]);
         }
         this.valittuData.remove(0);
-        mapData();
-    }
-
-    private void mapData() {
+        
         this.mapattuDataY = new int[this.valittuData.size()];
         this.mapattuDataX = new int[this.valittuData.size()];
         ArrayList<Double> apuLista = new ArrayList<>();
@@ -61,17 +72,25 @@ public class Mapper {
         }
 
         double valmisY = -1;
-        double valmisX = -1;
+        double valmisX = this.reunat[0];
         int iteraatio = 0;
+
+        // Pääasiallinen mappaava funktio
         for (double d : apuLista) {
-            int piirrettavaAlue = this.dimensio[0] - this.reunat[0];
-            valmisX = (piirrettavaAlue / this.raakaData.size()) * iteraatio;
-            valmisY = (d / max) * (this.dimensio[1] - this.reunat[1]);
+            double piirrettavaAlueX = this.dimensio[0] - 2 * this.reunat[0];
+            double piirrettavaAlueY = this.dimensio[1] - 2 * this.reunat[1];
+            valmisX = this.reunat[0] + iteraatio * (piirrettavaAlueX / (double) apuLista.size());
+
+            double yValiarvo = d - min;
+            valmisY = (yValiarvo / (max - min)) * piirrettavaAlueY;
+            valmisY = peilaa(valmisY, piirrettavaAlueY) + this.reunat[1];
 
             this.mapattuDataX[iteraatio] = (int) Math.round(valmisX);
             this.mapattuDataY[iteraatio] = (int) Math.round(valmisY);
+
             iteraatio++;
         }
+        //
     }
 
     private double poistaPilkku(String s) {
@@ -81,8 +100,9 @@ public class Mapper {
         return Double.parseDouble(pilkuton);
     }
 
-    private double peilaaMediaaninSuhteen() {
-        return -1;
+    private double peilaa(double peilattavaArvo, double piirrettavaAlueY) {
+        double peilattuArvo = piirrettavaAlueY - peilattavaArvo;
+        return peilattuArvo;
     }
 
     private int valinta(String dataValinta) {
@@ -114,4 +134,33 @@ public class Mapper {
         return mapattuDataY;
     }
 
+    public int getMapattuDataSuurinX() {
+        int suurin = Integer.MIN_VALUE;
+        for (int i : this.mapattuDataX) {
+            if (i > suurin) {
+                suurin = i;
+            }
+        }
+        return suurin;
+    }
+
+    public int getMapattuDataSuurinY() {
+        int suurin = Integer.MIN_VALUE;
+        for (int i : this.mapattuDataY) {
+            if (i > suurin) {
+                suurin = i;
+            }
+        }
+        return suurin;
+    }
+
+    public int getMapattuDataPieninY() {
+        int pienin = Integer.MAX_VALUE;
+        for (int i : this.mapattuDataY) {
+            if (i < pienin) {
+                pienin = i;
+            }
+        }
+        return pienin;
+    }
 }

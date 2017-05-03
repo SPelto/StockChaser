@@ -6,6 +6,7 @@
 package chaser.logiikka;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,6 +48,14 @@ public class DataHandler {
         reader.readFile(filePath);
         reader.workFile();
         return reader.getData();
+    }
+    
+    public double getSuurinArvo(String dataValinta, String tiedosto) throws FileNotFoundException {
+       return this.reader.getSuurinArvo(dataValinta, new File("ExampleData/" + tiedosto + ".csv"));
+    }
+    
+    public double getPieninArvo(String dataValinta, String tiedosto) throws FileNotFoundException {
+        return this.reader.getPieninArvo(dataValinta, new File("ExampleData/" + tiedosto + ".csv"));
     }
 
 }

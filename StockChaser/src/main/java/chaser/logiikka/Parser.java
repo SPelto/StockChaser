@@ -75,32 +75,21 @@ public class Parser {
         this.muokattuData = m.group(2);
         //
 
-        //Käsitellään irtileikattua osaa
+        // Käsitellään irtileikattua osaa
         p = Pattern.compile(
                 "(td class=|th class=\"bb)"
                 + "(.*?)"
                 + "(tr|</table>)");
         m = p.matcher(this.muokattuData);
-
+        
+        // Varmistetaan että lista on tyhjä
+        this.halututTrimmaamattomatRivit.clear();
         while (m.find()) {
             this.halututTrimmaamattomatRivit.add(m.group(2));
         }
         //
     }
 
-//    /**
-//     * Metodi leikkaa html-koodista palasen halutun osan ympäriltä.
-//     */
-//    public void cutRaakaData() {
-//
-//        Pattern p = Pattern.compile("(<table class=\"gf-table historical_price\"><tr class=bb>)"
-//                + "(.*?)"
-//                + "(</table></div></form></div></div></div></div>)");
-//        Matcher m = p.matcher(this.raakaData);
-//
-//        m.find();
-//        this.muokattuData = m.group(2);
-//    }
     public String getRaakaData() {
         return raakaData;
     }
