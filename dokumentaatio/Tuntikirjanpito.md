@@ -15,6 +15,4 @@ Päivä | Tunnit | Kuvaus
 26.4.2017 | 5h | Piirtäjän koodamista
 27.4.2017 | 6h | Mapper luokan ja sen testien koodaamista. Sekvenssikaavioiden teko. Luokkakaavien päivittäminen.
 3.5.2017  | 4h | Toimivan .jar tiedoston luonnissa syntyvien ongelmien selvittelyä.
-4.5.2017  | 9h | Tiedostojen säilyttämistä varten ohjelma luo itselleen kansion, ja tämän takia lähes jokaisen testin korjaaminen. Käyttäjä voi nyt valita ladattavan datan määrän. Javadocin päivittämistä
- 
-...|...|...|
+4.5.2017  | 9h | Tiedostojen säilyttämistä varten ohjelma luo itselleen kansion, ja tämän takia lähes jokaisen testin korjaaminen. Käyttäjä voi nyt valita ladattavan datan määrän. Javadocin päivittämistä.
