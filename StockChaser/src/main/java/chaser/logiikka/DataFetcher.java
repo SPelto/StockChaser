@@ -31,11 +31,20 @@ public class DataFetcher {
      * "google.com/finance" kautta haetun "historical prices" datan
      *
      * @param url Sivuston josta data haetaan url.
+     * @param alku Google listaa sivullaan joukon markkinadataa, alku on
+     * monennestako listan jäsenestä aloitetaan.
+     * @param loppu Montako riviä parametrin alku jälkeen ladataan koneelle.
      * @return palauttaa parserilla käyneen html- koodin josta on leikattu irti
      * vain tarpeellinen data.
      * @throws IOException
      */
     public String makeStringFromUrl(String url, String alku, String loppu) throws IOException {
+        if (Integer.parseInt(loppu) > 250) {
+            loppu = "250";
+        }
+        if (Integer.parseInt(alku) >= 250) {
+            alku = "249";
+        }
         String mistaMihin = "&start=" + alku + "&num=" + loppu;
         String sourceString = getHtml(url + mistaMihin);
         this.parser.setRaakaData(sourceString);

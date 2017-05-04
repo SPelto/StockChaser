@@ -22,7 +22,7 @@ public class DataHandler {
     private DataFetcher dFetch;
     private FileReader reader;
     private FileMaker writer;
-    private String StockDataKansionSijainti;
+    private String stockDataKansionSijainti;
 
     /**
      * DataHandlerin konstruktori luo itselleen tarvitsemansa luokat.
@@ -34,7 +34,7 @@ public class DataHandler {
         this.dFetch = new DataFetcher();
         this.reader = new FileReader();
         this.writer = new FileMaker();
-        this.StockDataKansionSijainti = kansionSijainti;
+        this.stockDataKansionSijainti = kansionSijainti;
     }
 
     /**
@@ -42,6 +42,8 @@ public class DataHandler {
      *
      * @param tiedostonNimi Käyttäjän antama nimi luotavalle tiedostolle.
      * @param url Url josta data haetaan.
+     * @param alku Google listaa sivullaan joukon markkinadataa, alku on monennestako listan jäsenestä aloitetaan.
+     * @param loppu Montako riviä parametrin alku jälkeen ladataan koneelle.
      * @throws IOException
      */
     public void makeFileFromUrl(String tiedostonNimi, String url, String alku, String loppu) throws IOException {
@@ -73,7 +75,7 @@ public class DataHandler {
      * @throws FileNotFoundException
      */
     public double getSuurinArvo(String dataValinta, String tiedostonNimi) throws FileNotFoundException {
-        return this.reader.getSuurinArvo(dataValinta, new File(this.StockDataKansionSijainti + "/StockData/" + tiedostonNimi + ".csv"));
+        return this.reader.getSuurinArvo(dataValinta, new File(this.stockDataKansionSijainti + "/StockData/" + tiedostonNimi + ".csv"));
     }
 
     /**
@@ -86,7 +88,7 @@ public class DataHandler {
      * @throws FileNotFoundException
      */
     public double getPieninArvo(String dataValinta, String tiedostonNimi) throws FileNotFoundException {
-        return this.reader.getPieninArvo(dataValinta, new File(this.StockDataKansionSijainti + "/StockData/" + tiedostonNimi + ".csv"));
+        return this.reader.getPieninArvo(dataValinta, new File(this.stockDataKansionSijainti + "/StockData/" + tiedostonNimi + ".csv"));
     }
 
 }

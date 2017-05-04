@@ -231,12 +231,12 @@
         </Container>
         <Component class="javax.swing.JTextField" name="dataHakuAlku">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Monennestako datapisteest&#xe4; keraaminen aloitetaan"/>
+            <Property name="toolTipText" type="java.lang.String" value="Monennestako datapisteest&#xe4; keraaminen aloitetaan. Maksimi on 249."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="datanHakuLoppu">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Montako datapistett&#xe4; ker&#xe4;t&#xe4;&#xe4;n (Jos pyyd&#xe4;t enemm&#xe4;n kuin mahdollista, ladataan mahdollisimman paljon)"/>
+            <Property name="toolTipText" type="java.lang.String" value="Montako datapistett&#xe4; ker&#xe4;t&#xe4;&#xe4;n. Maksimi on 250"/>
           </Properties>
         </Component>
       </SubComponents>

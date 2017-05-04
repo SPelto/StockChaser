@@ -136,9 +136,9 @@ public class GUI extends javax.swing.JFrame {
         ListatutTiedostot.setRows(5);
         jScrollPane2.setViewportView(ListatutTiedostot);
 
-        dataHakuAlku.setToolTipText("Monennestako datapisteestä keraaminen aloitetaan");
+        dataHakuAlku.setToolTipText("Monennestako datapisteestä keraaminen aloitetaan. Maksimi on 249.");
 
-        datanHakuLoppu.setToolTipText("Montako datapistettä kerätään (Jos pyydät enemmän kuin mahdollista, ladataan mahdollisimman paljon)");
+        datanHakuLoppu.setToolTipText("Montako datapistettä kerätään. Maksimi on 250");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -263,7 +263,7 @@ public class GUI extends javax.swing.JFrame {
         boolean onnistui = true;
         try {
             dh.makeFileFromUrl(tiedostonNimi, url, dataHakuAlku.getText(), datanHakuLoppu.getText());
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             jTextArea1.setText("Jotain meni pieleen, tiedostoa ei luotu");
             onnistui = false;
         }
