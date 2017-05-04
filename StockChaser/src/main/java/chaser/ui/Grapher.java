@@ -88,9 +88,7 @@ public class Grapher extends JPanel {
     }
 
     private void piirraPaivamaarat(Graphics g) {
-        //Alkamispäivämäärä
         g.drawString(this.data.get(1)[0], this.reunat[0], this.dimensio[1] - this.reunat[1] / 2);
-        //Lopetuspäivämäärä
         g.drawString(this.data.get(this.data.size() - 1)[0], this.dimensio[0] - 2*this.reunat[0], this.dimensio[1] - this.reunat[1] / 2);
 
     }
