@@ -16,7 +16,7 @@ Piirrä toiminto sallii datan visualisoimisen graafina. Tämä avaa uuden ikkuna
 
 # Raportit
 [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/dokumentaatio/checkstyle/checkstyle.html)\
-[pit-raportti](https://htmlpreview.github.io/?https://raw.githubusercontent.com/SPelto/StockChaser/master/dokumentaatio/pit/201705042238/chaser.logiikka/index.html)\
-[javadoc](https://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/dokumentaatio/javadoc/apidocs/index.html)
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/dokumentaatio/pit/201705042308/index.html)\
+[javadoc](https://htmlpreview.github.io/?https://github.com/SPelto/StockChaser/blob/master/javadoc/apidocs/index.html)
 
 
