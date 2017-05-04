@@ -5,14 +5,9 @@
  */
 package chaser.main;
 
-import chaser.logiikka.FileReader;
 import chaser.ui.GUI;
-import java.util.Scanner;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.SwingUtilities;
 
 /**
  * Ohjelmalla voi hakea markkinadataa google.com/finance sivustolta ja tallentaa
@@ -25,9 +20,10 @@ public class Main {
 
     /**
      * Pääluokka ei tee muuta kuin asettaa käyttöliittymän näkyväksi.
+     *
      * @param args
      * @throws IOException
-     * @throws URISyntaxException 
+     * @throws URISyntaxException
      */
     public static void main(String[] args) throws IOException, URISyntaxException {
 

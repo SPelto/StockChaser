@@ -7,12 +7,9 @@ package chaser.ui;
 
 import chaser.logiikka.DataHandler;
 import chaser.logiikka.Mapper;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**

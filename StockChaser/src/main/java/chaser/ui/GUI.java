@@ -6,15 +6,10 @@
 package chaser.ui;
 
 import chaser.logiikka.DataHandler;
-import chaser.logiikka.FileMaker;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**

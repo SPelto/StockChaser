@@ -6,10 +6,6 @@
 package chaser.logiikka;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.stream.Stream;
 
 /**
  * Piirrettäessä kuvaajaa ei voida suoraan käyttää datapisteiden arvoja kuvaajan
