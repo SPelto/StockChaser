@@ -1,4 +1,4 @@
-**Aihe**: Arvopaperidatan visualisointi- ja käsittelyjärjestelmä. Toteutetaan järjestelmä joka tarjoaa käyttäjälleen visualisointi- ja analysointityökaluja.
+**Aihe**: Arvopaperidatan lataus, tallennus ja visualisointi järjestelmä.
 
 **Käyttäjät**: Yksityishenkilöt
 
