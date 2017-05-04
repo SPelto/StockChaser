@@ -7,7 +7,6 @@ package chaser.logiikka;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -16,50 +15,50 @@ import java.util.ArrayList;
  * DataHandler koordinoi datan muovaamiseen, tallentamiseen ja hakemiseen
  * tarkoitettuja luokkia.
  *
- * @author sPelto
+ * @author Samuli Peltonen
  */
 public class DataHandler {
 
     private DataFetcher dFetch;
     private FileReader reader;
     private FileMaker writer;
-    private String path;
+    private String StockDataKansionSijainti;
 
     /**
      * DataHandlerin konstruktori luo itselleen tarvitsemansa luokat.
      *
-     * @param path Ohjelman luoman "StockData" kansion sijainti.
+     * @param kansionSijainti Ohjelman luoman "StockData" kansion sijainti.
      * @throws URISyntaxException
      */
-    public DataHandler(String path) throws URISyntaxException {
+    public DataHandler(String kansionSijainti) throws URISyntaxException {
         this.dFetch = new DataFetcher();
         this.reader = new FileReader();
         this.writer = new FileMaker();
-        this.path = path;
+        this.StockDataKansionSijainti = kansionSijainti;
     }
 
     /**
      * Luo .csv tiedoston.
      *
-     * @param fileName Käyttäjän antama nimi luotavalle tiedostolle.
+     * @param tiedostonNimi Käyttäjän antama nimi luotavalle tiedostolle.
      * @param url Url josta data haetaan.
      * @throws IOException
      */
-    public void makeFileFromUrl(String fileName, String url, String alku, String loppu) throws IOException {
+    public void makeFileFromUrl(String tiedostonNimi, String url, String alku, String loppu) throws IOException {
         String teksti = this.dFetch.makeStringFromUrl(url, alku, loppu);
 
-        this.writer.makeFile(fileName, teksti);
+        this.writer.makeFile(tiedostonNimi, teksti);
     }
 
     /**
      * Lukee parametrinä annetun tiedostonpolun datan ja muovaa siitä helposti
      * luettavan listan.
      *
-     * @param filePath Luettava tiedosto.
+     * @param tiedostoPolku Luettava tiedosto.
      * @return palauttaa tiedostosta haetun datan.
      */
-    public ArrayList<String[]> readFile(String filePath) {
-        reader.readFile(filePath);
+    public ArrayList<String[]> readFile(String tiedostoPolku) {
+        reader.readFile(tiedostoPolku);
         reader.workFile();
         return reader.getData();
     }
@@ -69,24 +68,25 @@ public class DataHandler {
      *
      * @param dataValinta Valinta .csv-tiedoston sarakkeista "Open, High, Low,
      * Close ja Volume".
-     * @param tiedosto Luettava tiedosto.
+     * @param tiedostonNimi Luettava tiedosto.
      * @return Palauttaa valitun tiedoston valitun sarakkeen suurimman arvon.
      * @throws FileNotFoundException
      */
-    public double getSuurinArvo(String dataValinta, String tiedosto) throws FileNotFoundException {
-        return this.reader.getSuurinArvo(dataValinta, new File(this.path + "/StockData/" + tiedosto + ".csv"));
+    public double getSuurinArvo(String dataValinta, String tiedostonNimi) throws FileNotFoundException {
+        return this.reader.getSuurinArvo(dataValinta, new File(this.StockDataKansionSijainti + "/StockData/" + tiedostonNimi + ".csv"));
     }
 
     /**
      * Työkalu tiedoston sarakkeen pienimmän arvon löytämiseen.
      *
      * @param dataValinta Valinta .csv-tiedoston sarakkeista "Open, High, Low,
-     * @param tiedosto Luettava tiedosto.
+     * Close ja Volume.
+     * @param tiedostonNimi Luettava tiedosto.
      * @return Palauttaa valitun tiedoston valitun sarakkeen pienimmän arvon.
      * @throws FileNotFoundException
      */
-    public double getPieninArvo(String dataValinta, String tiedosto) throws FileNotFoundException {
-        return this.reader.getPieninArvo(dataValinta, new File(this.path + "/StockData/" + tiedosto + ".csv"));
+    public double getPieninArvo(String dataValinta, String tiedostonNimi) throws FileNotFoundException {
+        return this.reader.getPieninArvo(dataValinta, new File(this.StockDataKansionSijainti + "/StockData/" + tiedostonNimi + ".csv"));
     }
 
 }

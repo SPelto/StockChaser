@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  * y-akselin arvoina vaan ne täytyy sovittaa jollain järkevällä tavalla
  * annetulle alueelle johon graafi piirretään.
  *
- * @author samuli
+ * @author Samuli Peltonen
  */
 public class Mapper {
 
@@ -49,7 +49,7 @@ public class Mapper {
      *
      * @param dataValinta Valinta .csv tiedoston sarakkeista.
      */
-    public void mapData(String dataValinta) {
+    public void kuvaaData(String dataValinta) {
         int sarakeValinta = valinta(dataValinta);
         this.valittuData.clear();
 

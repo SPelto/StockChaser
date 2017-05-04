@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities;
  * sen paikalliseen .csv-tiedostoon. Ohjelma sallii myös datan kuvaajan
  * piirtämisen.
  *
- * @author sPelto
+ * @author Samuli Peltonen
  */
 public class Main {
 

@@ -13,7 +13,7 @@ import java.util.Scanner;
 /**
  * Hakee html-koodia netistä ja muovaa sen merkkijonoksi.
  *
- * @author sPelto
+ * @author Samuli Peltonen
  */
 public class DataFetcher {
 
@@ -38,8 +38,8 @@ public class DataFetcher {
     public String makeStringFromUrl(String url, String alku, String loppu) throws IOException {
         String mistaMihin = "&start=" + alku + "&num=" + loppu;
         String sourceString = getHtml(url + mistaMihin);
-        this.parser.setRawData(sourceString);
-        return this.parser.makeMeaningfulString();
+        this.parser.setRaakaData(sourceString);
+        return this.parser.luoJarkevaMerkkijono();
     }
 
     /**

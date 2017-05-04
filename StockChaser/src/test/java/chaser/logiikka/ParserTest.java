@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author samuli
+ * @author Samuli Peltonen
  */
 public class ParserTest {
 
@@ -83,7 +83,7 @@ public class ParserTest {
     @Test
     public void makeRivitLuoOikeanlaisenListan() throws FileNotFoundException {
 
-        this.parser.makeRivit();
+        this.parser.luoRivit();
 
         ArrayList<String> rivit = this.parser.getHalututTrimmaamattomatRivit();
 
@@ -105,9 +105,9 @@ public class ParserTest {
 //    }
     @Test
     public void makeMeaningfullStringToimii() {
-        this.parser.setRawData(html);
+        this.parser.setRaakaData(html);
 
-        String teksti = parser.makeMeaningfulString();
+        String teksti = parser.luoJarkevaMerkkijono();
         assertTrue(teksti.substring(0, 31).equals("Date,Open,High,Low,Close,Volume"));
 
     }

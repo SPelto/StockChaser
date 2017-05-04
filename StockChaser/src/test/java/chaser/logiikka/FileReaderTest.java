@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author samuli
+ * @author Samuli Peltonen
  */
 public class FileReaderTest {
 

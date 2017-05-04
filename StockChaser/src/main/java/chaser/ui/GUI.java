@@ -19,7 +19,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author samuli
+ * @author Samuli Peltonen
  */
 public class GUI extends javax.swing.JFrame {
 
@@ -45,7 +45,6 @@ public class GUI extends javax.swing.JFrame {
 
     private String etsiTiedostopolku() throws URISyntaxException {
         File path = new File(GUI.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-
         return path.getParent();
     }
 
@@ -289,7 +288,7 @@ public class GUI extends javax.swing.JFrame {
         for (String s : this.tiedostot) {
             listaString = listaString + s + "\n";
         }
-        ListatutTiedostot.setText(tiedostoPolku + "/StockData" + "\n" + listaString);
+        ListatutTiedostot.setText("Tiedostot löytyvät kansiosta:\n" + tiedostoPolku + "/StockData" + "\n\n" + "Tiedostot:\n" + listaString);
     }//GEN-LAST:event_ListaaTiedostotActionPerformed
 
     private void PiirtajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PiirtajaActionPerformed

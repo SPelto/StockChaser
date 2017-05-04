@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author samuli
+ * @author Samuli Peltonen
  */
 public class MapperTest {
 
@@ -66,19 +66,19 @@ public class MapperTest {
         int[] reunat = new int[]{50, 50};
         Mapper m = new Mapper(data, dimensio, reunat);
 
-        m.mapData("Close");
+        m.kuvaaData("Close");
         assertEquals(m.getMapattuDataSuurinY(), m.getDimensio()[1] - m.getReunat()[1]);
         assertEquals(m.getMapattuDataPieninY(), m.getReunat()[1]);
 
-        m.mapData("High");
+        m.kuvaaData("High");
         assertEquals(m.getMapattuDataSuurinY(), m.getDimensio()[1] - m.getReunat()[1]);
         assertEquals(m.getMapattuDataPieninY(), m.getReunat()[1]);
 
-        m.mapData("Low");
+        m.kuvaaData("Low");
         assertEquals(m.getMapattuDataSuurinY(), m.getDimensio()[1] - m.getReunat()[1]);
         assertEquals(m.getMapattuDataPieninY(), m.getReunat()[1]);
 
-        m.mapData("Open");
+        m.kuvaaData("Open");
         assertEquals(m.getMapattuDataSuurinY(), m.getDimensio()[1] - m.getReunat()[1]);
         assertEquals(m.getMapattuDataPieninY(), m.getReunat()[1]);
 

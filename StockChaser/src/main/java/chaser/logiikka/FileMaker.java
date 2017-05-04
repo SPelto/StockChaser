@@ -13,11 +13,11 @@ import java.net.URISyntaxException;
 /**
  * FileMaker on työkalu tiedostojen luontiin.
  *
- * @author sPelto
+ * @author Samuli Peltonen
  */
 public class FileMaker {
 
-    private String path;
+    private String tiedostoSijainti;
 
     /**
      * FileMakerin konstruktori tarkastaa sijaintinsa ja sen perusteella
@@ -26,25 +26,23 @@ public class FileMaker {
      * @throws URISyntaxException
      */
     public FileMaker() throws URISyntaxException {
-        File path = new File(FileMaker.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-
-        this.path = path.getParent() + "/StockData/";
+        File polku = new File(FileMaker.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+        this.tiedostoSijainti = polku.getParent() + "/StockData/";
     }
 
     /**
      * Luo tiedoston jos kansiossa ei viellä ole sen nimistä tiedostoa.
      *
-     * @param fileName Tiedostolle annettava nimi (saa automaattisesti .csv
+     * @param tiedostonNimi Tiedostolle annettava nimi (saa automaattisesti .csv
      * päätteen)
      * @param teksti Merkkijono joka tiedostolle kirjoitetaan.
      * @return palauttaa joko null jos tiedosto on jo olemassa, tai luodun
      * tiedoston.
      * @throws IOException
      */
-    public File makeFile(String fileName, String teksti) throws IOException {
-        //Annetaan tiedostolle nimi ja tyyppi sekä sijainti
-        fileName = fileName + ".csv";
-        File tiedosto = new File(this.path + fileName);
+    public File makeFile(String tiedostonNimi, String teksti) throws IOException {
+        tiedostonNimi = tiedostonNimi + ".csv";
+        File tiedosto = new File(this.tiedostoSijainti + tiedostonNimi);
 
         if (!tiedosto.createNewFile()) {
             return null;
@@ -56,8 +54,8 @@ public class FileMaker {
         return tiedosto;
     }
 
-    public String getPath() {
-        return path;
+    public String getTiedostoSijainti() {
+        return tiedostoSijainti;
     }
 
 }

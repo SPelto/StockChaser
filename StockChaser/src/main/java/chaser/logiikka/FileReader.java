@@ -13,7 +13,7 @@ import java.util.Scanner;
 /**
  * Työkalu tiedostojen lukemiseen ja niiden datan tarkasteluun.
  *
- * @author sPelto
+ * @author Samuli Peltonen
  */
 public class FileReader {
 
@@ -31,11 +31,11 @@ public class FileReader {
      * FileReader luokan konstruktori joka luo tyhjän listan ja File-olion sille
      * annetun tiedostopolun perusteella.
      *
-     * @param filePath Luettavan tiedoston tiedostopolku.
+     * @param tiedostoPolku Luettavan tiedoston tiedostopolku.
      */
-    public void readFile(String filePath) {
+    public void readFile(String tiedostoPolku) {
         this.data = new ArrayList<>();
-        this.tiedosto = new File(filePath);
+        this.tiedosto = new File(tiedostoPolku);
     }
 
     /**
@@ -156,9 +156,9 @@ public class FileReader {
         if (dataValinta.equals("Close")) {
             sarakeValinta = 4;
         }
-//        if (dataValinta.equals("Volume")) {
-//            sarakeValinta = 5;
-//        }
+        if (dataValinta.equals("Volume")) {
+            sarakeValinta = 5;
+        }
         return sarakeValinta;
     }
 

@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author samuli
+ * @author Samuli Peltonen
  */
 public class Grapher extends JPanel {
 
@@ -42,7 +42,7 @@ public class Grapher extends JPanel {
         } catch (Exception e) {
         }
         this.mapper = new Mapper(this.data, this.dimensio, this.reunat);
-        this.mapper.mapData(dataValinta);
+        this.mapper.kuvaaData(dataValinta);
     }
 
     public void paint(Graphics g) {
