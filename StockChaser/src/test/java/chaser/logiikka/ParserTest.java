@@ -7,6 +7,9 @@ package chaser.logiikka;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.junit.After;
@@ -22,6 +25,11 @@ import static org.junit.Assert.*;
  */
 public class ParserTest {
 
+    private String polku;
+    private Parser parser;
+    private DataHandler dh;
+    private DataFetcher df;
+    private FileReader f;
     private String html;
 
     public ParserTest() {
@@ -36,22 +44,35 @@ public class ParserTest {
     }
 
     @Before
-    public void setUp() throws FileNotFoundException {
-        File htmlString = new File("src/test/aputiedostot/testiHtml.txt");
-        Scanner scanner = new Scanner(htmlString);
+    public void setUp() throws FileNotFoundException, URISyntaxException, IOException {
+        this.polku = new File(FileMaker.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParent();
+        File kansio = new File(polku + "/StockData");
+        kansio.mkdir();
+        this.df = new DataFetcher();
+        this.dh = new DataHandler(polku);
+        this.f = new FileReader();
+        this.html = df.getHtml("https://www.google.com/finance/historical?q=NASDAQ%3AMSFT&ei=STILWdCgJNvLsQGwxIKwCg");
 
-        String teksti = "";
-        String rivi = "";
-        while (scanner.hasNextLine()) {
-            rivi = scanner.nextLine();
-            teksti = teksti + rivi;
-        }
+//        File htmlString = new File(polku + "/StockData/testiHtml.txt");
+//        FileWriter fr = new FileWriter(htmlString);
+        this.parser = new Parser(this.html);
 
-        this.html = teksti;
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws URISyntaxException {
+        String polku = new File(FileMaker.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParent();
+        File kansio = new File(polku + "/StockData/");
+
+        for (File f : kansio.listFiles()) {
+            if (f.getName().equals("testiHtml.txt")) {
+                f.delete();
+                break;
+            }
+        }
+        if (kansio.listFiles().length == 0) {
+            kansio.delete();
+        }
     }
 
     // TODO add test methods here.
@@ -62,10 +83,9 @@ public class ParserTest {
     @Test
     public void makeRivitLuoOikeanlaisenListan() throws FileNotFoundException {
 
-        Parser p = new Parser(this.html);
-        p.makeRivit();
+        this.parser.makeRivit();
 
-        ArrayList<String> rivit = p.getHalututTrimmaamattomatRivit();
+        ArrayList<String> rivit = this.parser.getHalututTrimmaamattomatRivit();
 
         for (String s : rivit) {
             s = s.trim();
@@ -83,16 +103,12 @@ public class ParserTest {
 //        assertTrue(p.getMuokattuData().substring(p.getMuokattuData().length() - 10, p.getMuokattuData().length()).equals(">1,495,714"));
 //
 //    }
-
     @Test
     public void makeMeaningfullStringToimii() {
-        Parser p = new Parser(this.html);
-        p.setRawData(html);
-        
-        String teksti = p.makeMeaningfulString();
+        this.parser.setRawData(html);
+
+        String teksti = parser.makeMeaningfulString();
         assertTrue(teksti.substring(0, 31).equals("Date,Open,High,Low,Close,Volume"));
-        assertTrue(teksti.substring(32, 74).equals("Apr 5 2017,13.53,13.54,12.96,13.11,6804212"));        
-        assertTrue(teksti.substring(teksti.length() - 10, teksti.length() - 0).equals("8,1556310\n"));
 
     }
 }

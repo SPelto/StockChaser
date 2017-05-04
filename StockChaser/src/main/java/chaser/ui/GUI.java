@@ -6,8 +6,12 @@
 package chaser.ui;
 
 import chaser.logiikka.DataHandler;
+import chaser.logiikka.FileMaker;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,23 +25,41 @@ public class GUI extends javax.swing.JFrame {
 
     private DataHandler dh;
     private ArrayList<String> tiedostot;
+    private String tiedostoPolku;
 
-    public GUI() {
-        this.dh = new DataHandler();
+    public GUI() throws IOException, URISyntaxException {
         this.tiedostot = new ArrayList<>();
-        etsiTiedostot();
+        this.tiedostoPolku = etsiTiedostopolku();
+        this.dh = new DataHandler(this.tiedostoPolku);
 
+        luoKansio();
+        etsiTiedostot();
         initComponents();
     }
 
+    private void luoKansio() throws IOException, URISyntaxException {
+        File kansio = new File(this.tiedostoPolku + "/StockData");
+        kansio.mkdir();
+
+    }
+
+    private String etsiTiedostopolku() throws URISyntaxException {
+        File path = new File(GUI.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+
+        return path.getParent();
+    }
+
     private void etsiTiedostot() {
-        String tiedostoPolku = "ExampleData/";
-        File kansio = new File(tiedostoPolku);
-        tiedostot.clear();
-        for (File f : kansio.listFiles()) {
-            if (!tiedostot.contains(f.getName())) {
-                this.tiedostot.add(f.getName());
+        try {
+            File kansio = new File(tiedostoPolku + "/StockData");
+            tiedostot.clear();
+            for (File f : kansio.listFiles()) {
+                if (!tiedostot.contains(f.getName())) {
+                    this.tiedostot.add(f.getName());
+                }
             }
+        } catch (Exception e) {
+
         }
     }
 
@@ -63,6 +85,8 @@ public class GUI extends javax.swing.JFrame {
         ListaaTiedostot = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListatutTiedostot = new javax.swing.JTextArea();
+        dataHakuAlku = new javax.swing.JTextField();
+        datanHakuLoppu = new javax.swing.JTextField();
         Piirtaja = new javax.swing.JButton();
         mapattavaTiedosto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -113,25 +137,14 @@ public class GUI extends javax.swing.JFrame {
         ListatutTiedostot.setRows(5);
         jScrollPane2.setViewportView(ListatutTiedostot);
 
+        dataHakuAlku.setToolTipText("Monennestako datapisteestä keraaminen aloitetaan");
+
+        datanHakuLoppu.setToolTipText("Montako datapistettä kerätään (Jos pyydät enemmän kuin mahdollista, ladataan mahdollisimman paljon)");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(Hae))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(ListaaTiedostot)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -143,6 +156,25 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2)))
                 .addGap(164, 164, 164))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(ListaaTiedostot))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(dataHakuAlku, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(datanHakuLoppu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Hae)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +190,10 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(luotavanTiedostonNimi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Hae, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Hae, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataHakuAlku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datanHakuLoppu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -175,7 +210,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        mapattavaTiedosto.setText("Kirjoita tähän piirrettävän tiedoston nimi");
+        mapattavaTiedosto.setToolTipText("Kirjoita tähän piirrettävän tiedoston nimi ilman tiedostopäätteitä");
 
         jLabel5.setText("Tiedoston valinta");
 
@@ -183,35 +218,34 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(304, 304, 304))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(mapattavaTiedosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(121, 121, 121))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Piirtaja)
-                        .addGap(164, 164, 164))))
+                        .addGap(164, 164, 164))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(mapattavaTiedosto, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(352, 352, 352)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(77, 77, 77)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(mapattavaTiedosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +263,7 @@ public class GUI extends javax.swing.JFrame {
 
         boolean onnistui = true;
         try {
-            dh.makeFileFromUrl(tiedostonNimi, url);
+            dh.makeFileFromUrl(tiedostonNimi, url, dataHakuAlku.getText(), datanHakuLoppu.getText());
         } catch (IOException ex) {
             jTextArea1.setText("Jotain meni pieleen, tiedostoa ei luotu");
             onnistui = false;
@@ -255,7 +289,7 @@ public class GUI extends javax.swing.JFrame {
         for (String s : this.tiedostot) {
             listaString = listaString + s + "\n";
         }
-        ListatutTiedostot.setText(listaString);
+        ListatutTiedostot.setText(tiedostoPolku + "/StockData" + "\n" + listaString);
     }//GEN-LAST:event_ListaaTiedostotActionPerformed
 
     private void PiirtajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PiirtajaActionPerformed
@@ -265,7 +299,7 @@ public class GUI extends javax.swing.JFrame {
         int[] dimensio = new int[]{1000, 700};
         int[] reunat = new int[]{100, 50};
         String tiedostoNimi = mapattavaTiedosto.getText();
-        Grapher graph = new Grapher(dimensio, reunat, tiedostoNimi, "Close", this.dh);
+        Grapher graph = new Grapher(dimensio, reunat, tiedostoNimi, "Close", this.dh, this.tiedostoPolku);
         f.add(graph);
     }//GEN-LAST:event_PiirtajaActionPerformed
 
@@ -312,6 +346,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea ListatutTiedostot;
     private javax.swing.JButton Piirtaja;
     private javax.swing.JTextField Url;
+    private javax.swing.JTextField dataHakuAlku;
+    private javax.swing.JTextField datanHakuLoppu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

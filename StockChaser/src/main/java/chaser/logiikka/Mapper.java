@@ -12,6 +12,9 @@ import java.util.Comparator;
 import java.util.stream.Stream;
 
 /**
+ * Piirrettäessä kuvaajaa ei voida suoraan käyttää datapisteiden arvoja kuvaajan
+ * y-akselin arvoina vaan ne täytyy sovittaa jollain järkevällä tavalla
+ * annetulle alueelle johon graafi piirretään.
  *
  * @author samuli
  */
@@ -24,6 +27,15 @@ public class Mapper {
     private int[] dimensio;
     private int[] reunat;
 
+    /**
+     * Mapper luokan kontruktori.
+     *
+     * @param data Data joka halutaan sovittaa kuvaajaksi.
+     * @param dimensio Piirrettävän alueen x- ja y-suuntaisten pikseleiden
+     * määrä.
+     * @param reunat Paljonko halutaan jättää väliä piirrettävän alueen ja
+     * ikkunan reunojen väliin.
+     */
     public Mapper(ArrayList<String[]> data, int[] dimensio, int[] reunat) {
         this.raakaData = data;
         this.valittuData = new ArrayList<>();
@@ -31,7 +43,12 @@ public class Mapper {
         this.reunat = reunat;
     }
 
-
+    /**
+     * Kuvaa luokalle annetun datan pisteet sisäisille muuttujille
+     * "MapattuDataX" ja "MapattuDataY".
+     *
+     * @param dataValinta Valinta .csv tiedoston sarakkeista.
+     */
     public void mapData(String dataValinta) {
         int sarakeValinta = valinta(dataValinta);
         this.valittuData.clear();
@@ -40,7 +57,7 @@ public class Mapper {
             this.valittuData.add(s[sarakeValinta]);
         }
         this.valittuData.remove(0);
-        
+
         this.mapattuDataY = new int[this.valittuData.size()];
         this.mapattuDataX = new int[this.valittuData.size()];
         ArrayList<Double> apuLista = new ArrayList<>();
@@ -65,7 +82,6 @@ public class Mapper {
         double valmisX = this.reunat[0];
         int iteraatio = 0;
 
-        // Pääasiallinen mappaava funktio
         for (double d : apuLista) {
             double piirrettavaAlueX = this.dimensio[0] - 2 * this.reunat[0];
             double piirrettavaAlueY = this.dimensio[1] - 2 * this.reunat[1];
@@ -80,7 +96,6 @@ public class Mapper {
 
             iteraatio++;
         }
-        //
     }
 
     private double poistaPilkku(String s) {
@@ -110,9 +125,9 @@ public class Mapper {
         if (dataValinta.equals("Close")) {
             sarakeValinta = 4;
         }
-//        if (dataValinta.equals("Volume")) {
-//            sarakeValinta = 5;
-//        }
+        if (dataValinta.equals("Volume")) {
+            sarakeValinta = 5;
+        }
         return sarakeValinta;
     }
 
@@ -134,6 +149,16 @@ public class Mapper {
         return suurin;
     }
 
+    public int getMapattuDataPieninX() {
+        int pienin = Integer.MAX_VALUE;
+        for (int i : this.mapattuDataX) {
+            if (i < pienin) {
+                pienin = i;
+            }
+        }
+        return pienin;
+    }
+
     public int getMapattuDataSuurinY() {
         int suurin = Integer.MIN_VALUE;
         for (int i : this.mapattuDataY) {
@@ -153,4 +178,13 @@ public class Mapper {
         }
         return pienin;
     }
+
+    public int[] getDimensio() {
+        return dimensio;
+    }
+
+    public int[] getReunat() {
+        return reunat;
+    }
+
 }

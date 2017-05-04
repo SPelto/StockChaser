@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * Työkalu tiedostojen lukemiseen ja niiden datan tarkasteluun.
  *
  * @author sPelto
  */
@@ -19,13 +20,22 @@ public class FileReader {
     private File tiedosto;
     private ArrayList<String[]> data;
 
+    /**
+     * FileReader luokan konstruktori joka luo tyhjän listan.
+     */
     public FileReader() {
         this.data = new ArrayList<>();
     }
 
+    /**
+     * FileReader luokan konstruktori joka luo tyhjän listan ja File-olion sille
+     * annetun tiedostopolun perusteella.
+     *
+     * @param filePath Luettavan tiedoston tiedostopolku.
+     */
     public void readFile(String filePath) {
+        this.data = new ArrayList<>();
         this.tiedosto = new File(filePath);
-
     }
 
     /**
@@ -38,7 +48,6 @@ public class FileReader {
         try {
             tiedostoLukija = new Scanner(this.tiedosto);
         } catch (Exception e) {
-            System.out.println("Tiedosto ei kelpaa");
         }
 
         String[] taulu = new String[6];
@@ -49,6 +58,12 @@ public class FileReader {
         siistiListanTaulut(this.data);
     }
 
+    /**
+     * Siistii sille annetun listan alkioita.
+     *
+     * @param lista Lista jonka alkioita siistitään siltä varalta että alkioiden
+     * alussa tai lopussa on jotain ylimääräistä.
+     */
     public static void siistiListanTaulut(ArrayList<String[]> lista) {
         ArrayList<String[]> apuLista = new ArrayList<>();
         if (!onkoEnsimmainenKirjainD(lista.get(0)[0])) {
@@ -69,6 +84,15 @@ public class FileReader {
         return data;
     }
 
+    /**
+     * DataHandlerin käyttää tätä metodia hakiessaan tiedostoista suurinta
+     * arvoa.
+     *
+     * @param dataValinta Valinta .csv-tiedoston sarakkeista "Open, High, Low,
+     * @param tiedosto Luettava tiedosto.
+     * @return Palauttaa valitun tiedoston valitun sarakkeen suurimman arvon.
+     * @throws FileNotFoundException
+     */
     public double getSuurinArvo(String dataValinta, File tiedosto) throws FileNotFoundException {
         int sarakeValinta = valinta(dataValinta);
         Scanner lukija = new Scanner(tiedosto);
@@ -89,6 +113,15 @@ public class FileReader {
         return suurin;
     }
 
+    /**
+     * DataHandlerin käyttää tätä metodia hakiessaan tiedostoista pienintä
+     * arvoa.
+     *
+     * @param dataValinta Valinta .csv-tiedoston sarakkeista "Open, High, Low,
+     * @param tiedosto Luettava tiedosto.
+     * @return Palauttaa valitun tiedoston valitun sarakkeen pienimmän arvon.
+     * @throws FileNotFoundException
+     */
     public double getPieninArvo(String dataValinta, File tiedosto) throws FileNotFoundException {
         int sarakeValinta = valinta(dataValinta);
         Scanner lukija = new Scanner(tiedosto);
@@ -129,7 +162,7 @@ public class FileReader {
         return sarakeValinta;
     }
 
-    public static boolean onkoEnsimmainenKirjainD(String s) {
+    private static boolean onkoEnsimmainenKirjainD(String s) {
         //Jostain syystä tiedostojen alusta löytyy tuntematon merkki, vaikka kaiken datan pitäisi alkaa "Date"
         return s.charAt(0) == 'D';
     }

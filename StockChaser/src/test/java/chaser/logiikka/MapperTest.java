@@ -5,6 +5,9 @@
  */
 package chaser.logiikka;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,36 +38,49 @@ public class MapperTest {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws URISyntaxException {
+        String polku = new File(FileMaker.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParent();
+        File kansio = new File(polku + "/StockData/");
+
+        for (File f : kansio.listFiles()) {
+            if (f.getName().equals("testi.csv")) {
+                f.delete();
+                break;
+            }
+        }
+        if (kansio.listFiles().length == 0) {
+            kansio.delete();
+        }
     }
 
     @Test
-    public void prosessoiXjaYToimiiOikein() {
-        DataHandler dh = new DataHandler();
-        FileReader fr = new FileReader();
-        fr.readFile("src/test/aputiedostot/testi.csv");
-        fr.workFile();
-        ArrayList<String[]> data = fr.getData();
+    public void mapDataToimiiOikein() throws URISyntaxException, IOException {
+        String polku = new File(FileMaker.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParent();
+        File kansio = new File(polku + "/StockData");
+        kansio.mkdir();
+        DataHandler dh = new DataHandler(polku);
+        dh.makeFileFromUrl("testi", "https://www.google.com/finance/historical?q=NASDAQ%3AMSFT&ei=STILWdCgJNvLsQGwxIKwCg", "0", "30");
+        ArrayList<String[]> data = dh.readFile(polku + "/StockData/" + "testi.csv");
+
         int[] dimensio = new int[]{1000, 700};
         int[] reunat = new int[]{50, 50};
         Mapper m = new Mapper(data, dimensio, reunat);
-        m.prosessoiXjaY("Open");
-        assertEquals(m.getMapattuDataY()[0], Math.round((1465.00 / 1498.00) * (700.00 - 50.00)));
-        
-        m.prosessoiXjaY("High");
-        assertEquals(m.getMapattuDataY()[0], Math.round((1483.00 / 1504.00) * (700.00 - 50.00)));
-        
-        m.prosessoiXjaY("Low");
-        assertEquals(m.getMapattuDataY()[0], Math.round((1461.00 / 1490.00) * (700.00 - 50.00)));
-        
-        m.prosessoiXjaY("Close");
-        assertEquals(m.getMapattuDataY()[0], Math.round((1483.00 / 1498.00) * (700.00 - 50.00)));
 
-    }
+        m.mapData("Close");
+        assertEquals(m.getMapattuDataSuurinY(), m.getDimensio()[1] - m.getReunat()[1]);
+        assertEquals(m.getMapattuDataPieninY(), m.getReunat()[1]);
 
-    @Test
-    public void valintqaToimiiOikein() {
-       
+        m.mapData("High");
+        assertEquals(m.getMapattuDataSuurinY(), m.getDimensio()[1] - m.getReunat()[1]);
+        assertEquals(m.getMapattuDataPieninY(), m.getReunat()[1]);
+
+        m.mapData("Low");
+        assertEquals(m.getMapattuDataSuurinY(), m.getDimensio()[1] - m.getReunat()[1]);
+        assertEquals(m.getMapattuDataPieninY(), m.getReunat()[1]);
+
+        m.mapData("Open");
+        assertEquals(m.getMapattuDataSuurinY(), m.getDimensio()[1] - m.getReunat()[1]);
+        assertEquals(m.getMapattuDataPieninY(), m.getReunat()[1]);
 
     }
 

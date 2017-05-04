@@ -29,7 +29,7 @@ public class Grapher extends JPanel {
     private int[] reunat;
     private Mapper mapper;
 
-    public Grapher(int[] dimensio, int[] reunat, String tiedostoValinta, String dataValinta, DataHandler dh) {
+    public Grapher(int[] dimensio, int[] reunat, String tiedostoValinta, String dataValinta, DataHandler dh, String polku) {
         this.tiedostoValinta = tiedostoValinta;
         this.dataValinta = dataValinta;
         this.data = new ArrayList<>();
@@ -37,7 +37,7 @@ public class Grapher extends JPanel {
         this.dimensio = dimensio;
         this.reunat = reunat;
         try {
-            this.data = this.dh.readFile("ExampleData/" + this.tiedostoValinta + ".csv");
+            this.data = this.dh.readFile(polku + "/StockData/" + this.tiedostoValinta + ".csv");
 
         } catch (Exception e) {
         }

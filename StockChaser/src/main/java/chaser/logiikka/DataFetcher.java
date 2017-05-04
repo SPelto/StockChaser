@@ -11,28 +11,33 @@ import java.net.URL;
 import java.util.Scanner;
 
 /**
+ * Hakee html-koodia netistä ja muovaa sen merkkijonoksi.
  *
  * @author sPelto
- *
- * Hakee html-koodia netistä ja muovaa sen merkkijonoksi.
  */
 public class DataFetcher {
 
     private Parser parser;
 
+    /**
+     * DataFetcher luokan konstruktori ei vaadi parametreja.
+     */
     public DataFetcher() {
         this.parser = new Parser();
     }
 
     /**
-     * @param url Sivuston josta data haetaan url. Hyväksyy vain
+     * Luokka luo sille annetun url:in perusteella merkkijonon. Hyväksyy vain
      * "google.com/finance" kautta haetun "historical prices" datan
      *
+     * @param url Sivuston josta data haetaan url.
      * @return palauttaa parserilla käyneen html- koodin josta on leikattu irti
      * vain tarpeellinen data.
+     * @throws IOException
      */
-    public String makeStringFromUrl(String url) throws IOException {
-        String sourceString = getHtml(url);
+    public String makeStringFromUrl(String url, String alku, String loppu) throws IOException {
+        String mistaMihin = "&start=" + alku + "&num=" + loppu;
+        String sourceString = getHtml(url + mistaMihin);
         this.parser.setRawData(sourceString);
         return this.parser.makeMeaningfulString();
     }

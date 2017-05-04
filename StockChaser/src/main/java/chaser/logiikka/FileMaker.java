@@ -8,8 +8,10 @@ package chaser.logiikka;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
+ * FileMaker on työkalu tiedostojen luontiin.
  *
  * @author sPelto
  */
@@ -17,12 +19,16 @@ public class FileMaker {
 
     private String path;
 
-    public FileMaker() {
-        this.path = "ExampleData/";
-    }
+    /**
+     * FileMakerin konstruktori tarkastaa sijaintinsa ja sen perusteella
+     * valitsee tiedostojen talletuspaikan.
+     *
+     * @throws URISyntaxException
+     */
+    public FileMaker() throws URISyntaxException {
+        File path = new File(FileMaker.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
 
-    public FileMaker(String path) {
-        this.path = path;
+        this.path = path.getParent() + "/StockData/";
     }
 
     /**
@@ -40,15 +46,9 @@ public class FileMaker {
         fileName = fileName + ".csv";
         File tiedosto = new File(this.path + fileName);
 
-        // Luodaan tiedosto
-        if (tiedosto.createNewFile()) {
-            System.out.println("\nTiedosto luotu");
-        } else {
-            System.out.println("\nTiedosto on jo olemassa! Keskeytetään");
+        if (!tiedosto.createNewFile()) {
             return null;
         }
-
-        //Kirjoitetaan tiedostoon
         FileWriter writer = new FileWriter(tiedosto);
         writer.write(teksti);
         writer.close();

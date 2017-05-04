@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Luokka jolla saadaan html-koodista haluttu data irti.
  *
  * @author sPelto
  *
@@ -22,10 +23,19 @@ public class Parser {
     private String muokattuData;
     private ArrayList<String> halututTrimmaamattomatRivit;
 
+    /**
+     * Parser luokan konstruktori jossa luodaan tyhjä lista.
+     */
     public Parser() {
         this.halututTrimmaamattomatRivit = new ArrayList<String>();
     }
 
+    /**
+     * Parser luokan konstruktori jossa luodaan tyhjä lista, ja annetaan
+     * sisäiselle muuttujalle "raakaData" merkkijono jota lähdetään muovaamaan.
+     *
+     * @param raw Muovaamatonta html-koodia.
+     */
     public Parser(String raw) {
         this.raakaData = raw;
         this.halututTrimmaamattomatRivit = new ArrayList<String>();
@@ -81,7 +91,7 @@ public class Parser {
                 + "(.*?)"
                 + "(tr|</table>)");
         m = p.matcher(this.muokattuData);
-        
+
         // Varmistetaan että lista on tyhjä
         this.halututTrimmaamattomatRivit.clear();
         while (m.find()) {
@@ -96,12 +106,6 @@ public class Parser {
 
     public String getMuokattuData() {
         return muokattuData;
-    }
-
-    public void tulostaRivit() {
-        for (String s : this.halututTrimmaamattomatRivit) {
-            System.out.println(s);
-        }
     }
 
     public void setRawData(String raakaData) {
