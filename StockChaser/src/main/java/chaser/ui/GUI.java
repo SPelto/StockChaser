@@ -84,6 +84,10 @@ public class GUI extends javax.swing.JFrame {
         Piirtaja = new javax.swing.JButton();
         mapattavaTiedosto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        openValittu = new javax.swing.JRadioButton();
+        highValittu = new javax.swing.JRadioButton();
+        lowValittu = new javax.swing.JRadioButton();
+        closeValittu = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -208,6 +212,14 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel5.setText("Tiedoston valinta");
 
+        openValittu.setText("Open");
+
+        highValittu.setText("High");
+
+        lowValittu.setText("Low");
+
+        closeValittu.setText("Close");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -216,15 +228,23 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(121, 121, 121))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(openValittu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Piirtaja)
                         .addGap(164, 164, 164))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(mapattavaTiedosto, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(highValittu)
+                            .addComponent(lowValittu)
+                            .addComponent(closeValittu))
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(352, 352, 352)
@@ -244,7 +264,15 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(mapattavaTiedosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Piirtaja)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Piirtaja)
+                    .addComponent(openValittu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(highValittu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lowValittu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(closeValittu)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -293,7 +321,8 @@ public class GUI extends javax.swing.JFrame {
         int[] dimensio = new int[]{1000, 700};
         int[] reunat = new int[]{100, 50};
         String tiedostoNimi = mapattavaTiedosto.getText();
-        Grapher graph = new Grapher(dimensio, reunat, tiedostoNimi, "Close", this.dh, this.tiedostoPolku);
+        String[] dataValinnat = new String[]{"Open", "High", "Close", "Low"};
+        Grapher graph = new Grapher(dimensio, reunat, tiedostoNimi, dataValinnat, this.dh, this.tiedostoPolku);
         f.add(graph);
     }//GEN-LAST:event_PiirtajaActionPerformed
 
@@ -340,8 +369,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea ListatutTiedostot;
     private javax.swing.JButton Piirtaja;
     private javax.swing.JTextField Url;
+    private javax.swing.JRadioButton closeValittu;
     private javax.swing.JTextField dataHakuAlku;
     private javax.swing.JTextField datanHakuLoppu;
+    private javax.swing.JRadioButton highValittu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -351,7 +382,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JRadioButton lowValittu;
     private javax.swing.JTextField luotavanTiedostonNimi;
     private javax.swing.JTextField mapattavaTiedosto;
+    private javax.swing.JRadioButton openValittu;
     // End of variables declaration//GEN-END:variables
 }

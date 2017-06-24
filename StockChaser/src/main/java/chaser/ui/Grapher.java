@@ -7,6 +7,7 @@ package chaser.ui;
 
 import chaser.logiikka.DataHandler;
 import chaser.logiikka.Mapper;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -19,14 +20,14 @@ import javax.swing.JPanel;
 public class Grapher extends JPanel {
 
     private String tiedostoValinta;
-    private String dataValinta;
+    private String[] dataValinta;
     private ArrayList<String[]> data;
     private DataHandler dh;
     private int[] dimensio;
     private int[] reunat;
     private Mapper mapper;
 
-    public Grapher(int[] dimensio, int[] reunat, String tiedostoValinta, String dataValinta, DataHandler dh, String polku) {
+    public Grapher(int[] dimensio, int[] reunat, String tiedostoValinta, String[] dataValinta, DataHandler dh, String polku) {
         this.tiedostoValinta = tiedostoValinta;
         this.dataValinta = dataValinta;
         this.data = new ArrayList<>();
@@ -39,17 +40,22 @@ public class Grapher extends JPanel {
         } catch (Exception e) {
         }
         this.mapper = new Mapper(this.data, this.dimensio, this.reunat);
-        this.mapper.kuvaaData(dataValinta);
+        ;
     }
 
+    @Override
     public void paint(Graphics g) {
-        piirraData(g);
+        for (String s : this.dataValinta) {
+            variValinta(s);
+            this.mapper.kuvaaData(s);
+            piirraData(g);
+        }
         piirraAkselit(g);
         piirraNimi(g);
-        try {
-            piirraMaxjaMinArvo(g);
-        } catch (FileNotFoundException ex) {
-        }
+//        try {
+//            piirraMaxjaMinArvo(g);
+//        } catch (FileNotFoundException ex) {
+//        }
         piirraPaivamaarat(g);
     }
 
@@ -57,7 +63,27 @@ public class Grapher extends JPanel {
         g.drawPolyline(this.mapper.getMapattuDataX(), this.mapper.getMapattuDataY(), this.mapper.getMapattuDataX().length);
     }
 
-    private void piirraAkselit(Graphics g) {
+    private Color variValinta(String s) {
+        if (dataValinta.equals("Open")) {
+            return Color.BLACK;
+        }
+        if (dataValinta.equals("High")) {
+            return Color.BLUE;
+        }
+        if (dataValinta.equals("Low")) {
+            return Color.GREEN;
+        }
+        if (dataValinta.equals("Close")) {
+            return Color.YELLOW;
+        }
+        if (dataValinta.equals("Volume")) {
+            return Color.RED;
+        }
+        return Color.BLACK;
+    }
+
+
+private void piirraAkselit(Graphics g) {
         int xAlku = this.reunat[0];
         int xLoppu = this.mapper.getMapattuDataSuurinX();
         int yAlku = this.reunat[1];
@@ -81,15 +107,15 @@ public class Grapher extends JPanel {
         g.drawString(tiedostoValinta, this.dimensio[0] / 2, this.reunat[1] / 2);
     }
 
-    private void piirraMaxjaMinArvo(Graphics g) throws FileNotFoundException {
-        g.drawString("" + this.dh.getSuurinArvo(dataValinta, tiedostoValinta), this.reunat[0] / 10, this.reunat[1]);
-        g.drawString("" + this.dh.getPieninArvo(dataValinta, tiedostoValinta), this.reunat[0] / 10, this.dimensio[1] - this.reunat[1]);
-
-    }
+//    private void piirraMaxjaMinArvo(Graphics g) throws FileNotFoundException {
+//        g.drawString("" + this.dh.getSuurinArvo(dataValinta, tiedostoValinta), this.reunat[0] / 10, this.reunat[1]);
+//        g.drawString("" + this.dh.getPieninArvo(dataValinta, tiedostoValinta), this.reunat[0] / 10, this.dimensio[1] - this.reunat[1]);
+//
+//    }
 
     private void piirraPaivamaarat(Graphics g) {
         g.drawString(this.data.get(1)[0], this.reunat[0], this.dimensio[1] - this.reunat[1] / 2);
-        g.drawString(this.data.get(this.data.size() - 1)[0], this.dimensio[0] - 2*this.reunat[0], this.dimensio[1] - this.reunat[1] / 2);
+        g.drawString(this.data.get(this.data.size() - 1)[0], this.dimensio[0] - 2 * this.reunat[0], this.dimensio[1] - this.reunat[1] / 2);
 
     }
 
